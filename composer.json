@@ -1,0 +1,18 @@
+{
+    "name": "fayebirame/monproje",
+    "autoload": {
+        "psr-4": {
+            "Router\\": "routes/",
+            "App\\": "app/",
+            "Database\\": "database/"
+
+        }
+    },
+    "authors": [
+        {
+            "name": "thioro faye",
+            "email": "fayethioro1998@gmail.com"
+        }
+    ],
+    "require": {}
+}
