@@ -256,7 +256,7 @@
                         <th>Niveau</th>
                         <th>Annee scolaire</th>
                         <th>effectif</th>
-                        <th>Statut année</th>
+
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -268,7 +268,7 @@
                             <td><?=$classe->nom_niveau?></td>
                             <td><?=$classe->nom_annee?></td>
                             <td><?=$classe->effectif_classe?></td>
-                            <td><?=$classe->statut?></td>
+
                             <td>
                                 <i class="fa fa-edit"></i> | <i class="fa fa-trash"></i>
                                 |<i class="fas fa-info-circle"></i>

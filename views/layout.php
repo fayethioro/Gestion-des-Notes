@@ -25,7 +25,7 @@
 body {
     background: rgb(190, 185, 185);
     height: 100vh;
-    /* background: red; */
+    background: gray;
 }
 
 .dflex {
@@ -58,22 +58,18 @@ header {
     -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
     justify-content: space-around;
 }
-
 .logo {
     width: 100px;
     height: 70px;
     background: transparent;
     margin-left: 30px;
-
 }
-
 img {
     width: 100%;
 }
 nav{
     margin-left: 50px;
 }
-
 .info{
     padding-top: 30px;
     justify-content: space-around;
@@ -126,6 +122,9 @@ span
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/classe">Liste des classes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/annee">Années Scolaires</a>
                 </li>
 
             </ul>
