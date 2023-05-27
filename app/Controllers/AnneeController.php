@@ -3,11 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\AnneeModel;
-use App\Validation\Validation;
 
 class AnneeController extends Controller
  {
-
     public function showAnnee()
  {
         $Annee = new AnneeModel( $this->getDB() );
@@ -25,7 +23,7 @@ class AnneeController extends Controller
                     $errorMessage = 'Cette année scolaire existe déjà.';
                 } else {
                     $Annee->add( $annee_scolaire );
-                    header( 'Location: /' );
+                    header( 'Location:  /' );
                     exit();
                 }
             }
@@ -34,20 +32,25 @@ class AnneeController extends Controller
         return $this->view( 'annee.annee', compact( 'posts', 'errorMessage' ) );
     }
 
-    public function modifierStatut()
+    public function modifierStatut( $id )
  {
-        $id = $_GET[ 'id' ];
-        $Annee = new AnneeModel( $this->getDB() );
-        $annee = $Annee->find( $id );
+        $annee = ( new AnneeModel( $this->getDB() ) )->find( $id );
+
         if ( $annee ) {
-            $statutActuel = $annee[ 'statut' ];
+            $statutActuel = $annee->statut;
             $nouveauStatut = ( $statutActuel == 0 ) ? 1 : 0;
 
-            $Annee->updateStatut( $id, $nouveauStatut );
+            ( new AnneeModel( $this->getDB() ) )->updateStatut( $id, $nouveauStatut );
 
             header( 'Location: /' );
             exit();
         }
     }
 
+    public function destroy( int $id )
+ {
+        ( new AnneeModel( $this->getDB() ) )->destroy( $id );
+
+        header( 'Location: /' );
+    }
 }

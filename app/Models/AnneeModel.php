@@ -21,14 +21,8 @@ class AnneeModel extends Model
 
     public function updateStatut( $id, $statut )
  {
-        $statement =  $this->db->getPDO()->prepare( 'UPDATE AnneeScolaire SET statut = :statut WHERE id_annee = :id' );
+        $statement =  $this->db->getPDO()->prepare( 'UPDATE AnneeScolaire SET statut = :statut WHERE id = :id' );
         $statement->execute( [ 'statut' => $statut, 'id' => $id ] );
     }
 
-    public function find( $id )
- {
-        $statement = $this->db->getPDO()->prepare( 'SELECT * FROM AnneeScolaire WHERE id_annee = :id' );
-        $statement->execute( [ 'id' => $id ] );
-        return $statement->fetch();
-    }
 }

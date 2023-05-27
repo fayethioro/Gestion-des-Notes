@@ -136,14 +136,14 @@
                     </div>
                     <div class="dflex jca" style="margin: 10px 10px;" >
                     <?php if ($annee->statut == 0): ?>
-                            <a href="/annee/modifier/<?= $annee->id_annee ?>"
+                            <a href="/modifier/<?= $annee->id ?>"
                              class="btn btn-primary">Activer</a>
                         <?php else: ?>
-                            <a href="/annee/modifier/<?= $annee->id_annee ?>" 
+                            <a href="/modifier/<?= $annee->id ?>" 
                             class="btn btn-primary">Désactiver</a>
                         <?php endif; ?>
                           <a href="#" class="btn btn-warning" >Modifier</a>
-                         <a href="#" class="btn btn-danger" >Supprimer</a>
+                         <a href="/delete/<?= $annee->id ?>" class="btn btn-danger" >Supprimer</a>
                     </div>
                 </div>
             </div>
