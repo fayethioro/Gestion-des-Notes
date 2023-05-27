@@ -270,8 +270,9 @@
                             <td><?=$classe->effectif_classe?></td>
 
                             <td>
-                                <i class="fa fa-edit"></i> | <i class="fa fa-trash"></i>
-                                |<i class="fas fa-info-circle"></i>
+                            <a href="#" class="btn btn-warning" >Modifier</a>
+                               <a href="#" class="btn btn-danger" >Supprimer</a>
+                               <a href="#" class="btn btn-primary" >Voir plus</a>
                             </td>
                         </tr>
                     <?php endforeach;?>

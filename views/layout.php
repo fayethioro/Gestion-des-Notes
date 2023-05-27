@@ -12,85 +12,90 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Gestion des Notes</title>
 
-    <link rel="stylesheet" href="<?=SCRIPTS . 'css' . DIRECTORY_SEPARATOR . 'app.css'?>">
-    <link rel="stylesheet" href="<?=SCRIPTS . 'css' . DIRECTORY_SEPARATOR . 'style.css'?>">
+    <link rel="stylesheet" href="<?= SCRIPTS . 'css' . DIRECTORY_SEPARATOR . 'app.css' ?>">
+    <link rel="stylesheet" href="<?= SCRIPTS . 'css' . DIRECTORY_SEPARATOR . 'style.css' ?>">
 
-<style>
-    * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-    background: rgb(190, 185, 185);
-    height: 100vh;
-    background: gray;
-}
+        body {
+            background: rgb(190, 185, 185);
+            height: 100vh;
+            background: gray;
+        }
 
-.dflex {
-    display: flex;
-}
+        .dflex {
+            display: flex;
+        }
 
-.jcc {
-    justify-content: center;
-}
+        .jcc {
+            justify-content: center;
+        }
 
-.aic {
-    align-items: center;
-}
+        .aic {
+            align-items: center;
+        }
 
-.fdc {
-    flex-direction: column;
-}
+        .fdc {
+            flex-direction: column;
+        }
 
-header {
-    height: 20%;
-    background-color: aliceblue;
-}
+        header {
+            height: 20%;
+            background-color: aliceblue;
+        }
 
-.entete {
-    width: 100%;
-    height: 60%;
-    border-bottom: 1px solid gray;
-    box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
-    justify-content: space-around;
-}
-.logo {
-    width: 100px;
-    height: 70px;
-    background: transparent;
-    margin-left: 30px;
-}
-img {
-    width: 100%;
-}
-nav{
-    margin-left: 50px;
-}
-.info{
-    padding-top: 30px;
-    justify-content: space-around;
-    gap: 20px;
-    width: 50%;
-}
-i{
-   color: #1b7bbb;
-}
-span
-{
-    color: #1b7bbb;
-    margin-left: 5px;
+        .entete {
+            width: 100%;
+            height: 60%;
+            border-bottom: 1px solid gray;
+            box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+            -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+            justify-content: space-around;
+        }
 
-}
-.container{
-    height: 80%;
-    width: 100%;
-}
+        .logo {
+            width: 100px;
+            height: 70px;
+            background: transparent;
+            margin-left: 30px;
+        }
 
-</style>
+        img {
+            width: 100%;
+        }
+
+        nav {
+            margin-left: 50px;
+        }
+
+        .info {
+            padding-top: 30px;
+            justify-content: space-around;
+            gap: 20px;
+            width: 50%;
+        }
+
+        i {
+            color: #1b7bbb;
+        }
+
+        span {
+            color: #1b7bbb;
+            margin-left: 5px;
+
+        }
+
+        .container {
+            height: 80%;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -110,12 +115,21 @@ span
         <nav>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">Acceuil</a>
+                    <a class="nav-link" aria-current="page" href="/">Années Scolaires</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="/niveau"
-                    >Niveau</a>
-
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" >
+                        Cycle
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/niveauPrimaire">Primaire</a></li>
+                        <li><a class="dropdown-item" href="/niveauMoyen">Moyen</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/niveauSecondaire">Secondaire</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Liste des eleves</a>
@@ -123,16 +137,16 @@ span
                 <li class="nav-item">
                     <a class="nav-link" href="/classe">Liste des classes</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="/annee">Années Scolaires</a>
-                </li>
+                </li> -->
 
             </ul>
         </nav>
     </header>
 
     <div class="container">
-        <?=$content?>
+        <?= $content ?>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

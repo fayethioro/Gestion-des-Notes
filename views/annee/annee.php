@@ -16,6 +16,7 @@
         -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
         color: #1b7bbb;
+        
     }
 
     #anneeScolaireInput {
@@ -24,7 +25,12 @@
 
     .row {
         margin: 10px 10px 10px 10px;
+       
 
+    }
+    
+    .card{
+        margin-bottom: 20px;
     }
 
     .fa-calendar-pen {
@@ -88,8 +94,11 @@
         background: green;
     }
 
-    #sup {
+    #sup, .d-inline {
         background: red;
+        width: 20%;
+        height: 20px;
+        border-radius: 20px;
     }
 
     #infos {
@@ -124,19 +133,27 @@
                         <h5 class="card-title">
                             <?= $annee->nom_annee ?>
                         </h5>
-                        <p class="card-text"></p>
                     </div>
-                </div>
-                <div class="dflex jca aic bouton">
-                    <button onclick="disableButtons()" id="statut">Statut</button>
-                    <button id="edit">modifier</button>
-                    <button id="sup">supprimer</button>
-                    <button id="infos">plus</button>
+                    <div class="dflex jca" style="margin: 10px 10px;" >
+                    <?php if ($annee->statut == 0): ?>
+                            <a href="/annee/modifier/<?= $annee->id_annee ?>"
+                             class="btn btn-primary">Activer</a>
+                        <?php else: ?>
+                            <a href="/annee/modifier/<?= $annee->id_annee ?>" 
+                            class="btn btn-primary">Désactiver</a>
+                        <?php endif; ?>
+                          <a href="#" class="btn btn-warning" >Modifier</a>
+                         <a href="#" class="btn btn-danger" >Supprimer</a>
+                    </div>
                 </div>
             </div>
         <?php endforeach; ?>
+    </div>
+</div>
 
     </div>
+</div>
+
     <script>
         const erreur = document.querySelector('.erreur');
 
@@ -181,38 +198,5 @@
             return true;
         }
         let envoi = document.getElementById("envoi");
-        envoi.addEventListener("click", validateForm)
-
-        // const toggleButtons = document.querySelectorAll("#statut");
-        const toggleButton = document.querySelector("#statut");
-        const edit = document.getElementById("edit");
-        const sup = document.getElementById("sup");
-        const infos = document.getElementById("infos");
-        // toggleButtons.forEach(toggleButton => {
-        toggleButton.addEventListener("click", function () {
-            let isDisabled = edit.disabled;
-
-            if (isDisabled) {
-                toggleButton.innerHTML = "Active";
-                edit.disabled = false;
-                sup.disabled = false;
-                infos.disabled = false;
-            } else {
-                toggleButton.innerHTML = "Desactive";
-                edit.disabled = true;
-                sup.disabled = true;
-                infos.disabled = true;
-            }
-            updateTitleStyle();
-        });
-        // });
-        function updateTitleStyle() {
-            let isDisabled = sup.disabled;
-            const title = document.querySelector('.card-title');
-            if (isDisabled) {
-                title.style.color = "red";
-            } else {
-                title.style.color = "white";
-            }
-        }
+        envoi.addEventListener("click", validateForm)       
     </script>

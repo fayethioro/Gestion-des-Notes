@@ -21,4 +21,12 @@ abstract class Model {
         return $statement->fetchColumn() == 0;
     }
 
+    // public function delete( $id ) {
+    //     $query = 'DELETE FROM {$this->table}  WHERE id = :id';
+    //     $stmt = $this->db->getPDO()->prepare( $query );
+    //     $stmt->bindParam( ':id', $id );
+    //     $stmt->execute();
+
+    //     return $stmt->rowCount();
+    // }
 }

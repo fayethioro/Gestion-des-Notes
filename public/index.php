@@ -10,10 +10,15 @@ $url = $_SERVER[ 'REQUEST_URI' ];
 
 $router = new Router( $url );
 
-$router->get( '/', 'App\Controllers\HomeController@index' );
-$router->get( '/niveau', 'App\Controllers\NiveauController@show' );
+$router->get( '/', 'App\Controllers\AnneeController@showAnnee' );
+$router->get( '/modifier/:id', 'App\Controllers\AnneeController@modifierStatut' );
+
+$router->get( '/niveauPrimaire', 'App\Controllers\NiveauController@show' );
+$router->get( '/niveauMoyen', 'App\Controllers\NiveauController@showM' );
+$router->get( '/niveauSecondaire', 'App\Controllers\NiveauController@showS' );
 $router->get( '/classe', 'App\Controllers\ClasseController@showClass' );
-$router->get( '/annee', 'App\Controllers\AnneeController@showAnnee' );
+// $router->post( '/annee/statut', 'App\Controllers\AnneeController@showStatut' );
+
 $router->post( '/annee', 'App\Controllers\AnneeController@showAnnee' );
 $router->get( '/login', 'App\Controllers\UserController@login' );
 $router->post( '/login', 'App\Controllers\UserController@loginPost' );

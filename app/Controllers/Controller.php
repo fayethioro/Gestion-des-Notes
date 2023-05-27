@@ -33,7 +33,6 @@ abstract class Controller {
 
     public function validateDates( $dateInput ) {
         $annees = explode( '-', $dateInput );
-
         if ( count( $annees ) !== 2 || intval( $annees[ 1 ] ) - intval( $annees[ 0 ] ) !== 1 ) {
             return false;
         }

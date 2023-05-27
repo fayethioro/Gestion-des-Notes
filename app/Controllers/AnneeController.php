@@ -25,13 +25,29 @@ class AnneeController extends Controller
                     $errorMessage = 'Cette année scolaire existe déjà.';
                 } else {
                     $Annee->add( $annee_scolaire );
-                    header( 'Location: /annee' );
+                    header( 'Location: /' );
                     exit();
                 }
             }
         }
 
         return $this->view( 'annee.annee', compact( 'posts', 'errorMessage' ) );
+    }
+
+    public function modifierStatut()
+ {
+        $id = $_GET[ 'id' ];
+        $Annee = new AnneeModel( $this->getDB() );
+        $annee = $Annee->find( $id );
+        if ( $annee ) {
+            $statutActuel = $annee[ 'statut' ];
+            $nouveauStatut = ( $statutActuel == 0 ) ? 1 : 0;
+
+            $Annee->updateStatut( $id, $nouveauStatut );
+
+            header( 'Location: /' );
+            exit();
+        }
     }
 
 }
