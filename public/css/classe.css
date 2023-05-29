@@ -1,0 +1,177 @@
+
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(190, 185, 185);
+    height: 100vh;
+    background: gray;
+}
+
+.dflex {
+    display: flex;
+}
+
+.jcc {
+    justify-content: center;
+}
+
+.aic {
+    align-items: center;
+}
+
+.fdc {
+    flex-direction: column;
+}
+
+header {
+    height: 20%;
+    background-color: aliceblue;
+}
+
+.entete {
+    width: 100%;
+    height: 60%;
+    border-bottom: 1px solid gray;
+    box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    justify-content: space-around;
+}
+
+.logo {
+    width: 100px;
+    height: 70px;
+    background: transparent;
+    margin-left: 30px;
+}
+
+img {
+    width: 100%;
+}
+
+nav {
+    margin-left: 50px;
+}
+
+.info {
+    padding-top: 30px;
+    justify-content: space-around;
+    gap: 20px;
+    width: 50%;
+}
+
+i {
+    color: #1b7bbb;
+}
+
+span {
+    color: #1b7bbb;
+    margin-left: 5px;
+
+
+}
+.contenainer {
+    height: 60%;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.classe {
+    gap: 10px;
+}
+
+.classe span {
+    padding-top: 10px;
+}
+
+main {
+    width: 80%;
+    height: auto;
+    padding: 20px;
+    margin: 5px auto;
+    background: whitesmoke;
+    font-family: system-ui;
+    color: #666;
+}
+
+.header {
+    width: 95%;
+    height: 50px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.items-controller,
+.search {
+    flex-shrink: 0;
+    align-content: center;
+}
+
+.items-controller {
+    width: 150px;
+}
+
+.search>input {
+    padding: 8px;
+    border: none;
+    outline: navajowhite;
+    margin: 0 0 0 10px;
+    background: white;
+}
+
+.field {
+    width: 90%;
+    height: auto;
+    margin: auto;
+}
+
+table {
+    width: 100%;
+    margin: 2px auto;
+    table-layout: auto;
+    color: #757575;
+    background-color: #ffff;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: left;
+}
+
+table tr th,
+td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-align: center;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+}
+h3{
+    text-align: center;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+
+}
+h3 span{
+    color: #1b7bbb ;
+    font-weight: 900;
+}
+td:hover{
+    background: #1b7bbb;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+    color: white;
+}
+
+.container {
+    height: 80%;
+    width: 100%;
+}
