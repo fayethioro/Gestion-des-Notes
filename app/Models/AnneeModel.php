@@ -8,21 +8,27 @@ class AnneeModel extends Model
 
     public function allA()
  {
-        $stmt = $this->db->getPDO()->query( 'SELECT * FROM AnneeScolaire order by nom_annee' );
+        $stmt = $this->db->getPDO()->query( 'SELECT * FROM AnneeScolaire order by statut desc' );
         return $stmt->fetchAll();
 
     }
 
-    public function add( $nom_annee )
+    public function add( $libelle )
  {
-        $statement =  $this->db->getPDO()->prepare( 'INSERT INTO AnneeScolaire (nom_annee) VALUES (:nom_annee)' );
-        $statement->execute( [ 'nom_annee' => $nom_annee ] );
+        $statement =  $this->db->getPDO()->prepare( 'INSERT INTO AnneeScolaire (libelle) VALUES (:libelle)' );
+        $statement->execute( [ 'libelle' => $libelle ] );
     }
 
     public function updateStatut( $id, $statut )
  {
         $statement =  $this->db->getPDO()->prepare( 'UPDATE AnneeScolaire SET statut = :statut WHERE id = :id' );
         $statement->execute( [ 'statut' => $statut, 'id' => $id ] );
+    }
+
+    public function disableAllStatusExcept( $id )
+ {
+        $statement = $this->db->getPDO()->prepare( 'UPDATE AnneeScolaire SET statut = 0 WHERE id <> :id' );
+        $statement->execute( [ 'id' => $id ] );
     }
 
 }

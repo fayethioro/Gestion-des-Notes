@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 use Router\Router;
 
 require_once '../vendor/autoload.php';
@@ -10,17 +10,18 @@ $url = $_SERVER[ 'REQUEST_URI' ];
 
 $router = new Router( $url );
 
-$router->get( '/', 'App\Controllers\AnneeController@showAnnee' );
-$router->get( '/delete/:id', 'App\Controllers\AnneeController@destroy' );
-$router->get( '/modifier/:id', 'App\Controllers\AnneeController@modifierStatut' );
-
-$router->get( '/niveauPrimaire', 'App\Controllers\NiveauController@show' );
-$router->get( '/niveauMoyen', 'App\Controllers\NiveauController@showM' );
-$router->get( '/niveauSecondaire', 'App\Controllers\NiveauController@showS' );
-$router->get( '/classe', 'App\Controllers\ClasseController@showClass' );
-
+$router->get( '/annee', 'App\Controllers\AnneeController@showAnnee' );
 $router->post( '/annee', 'App\Controllers\AnneeController@showAnnee' );
-$router->get( '/login', 'App\Controllers\UserController@login' );
-$router->post( '/login', 'App\Controllers\UserController@loginPost' );
+$router->get( '/annee/delete/:id', 'App\Controllers\AnneeController@destroy' );
+$router->get( '/annee/edit/:id', 'App\Controllers\AnneeController@edit' );
+$router->post( '/annee/edit/:id', 'App\Controllers\AnneeController@update' );
+$router->get( '/annee/modifier/:id', 'App\Controllers\AnneeController@modifierStatut' );
+
+$router->get( '/niveau', 'App\Controllers\NiveauController@show' );
+$router->get( '/niveau/classe/:id', 'App\Controllers\NiveauController@allClasse' );
+$router->post( '/niveau/classe/:id', 'App\Controllers\NiveauController@allClasse' );
+
+$router->get( '/', 'App\Controllers\UserController@login' );
+$router->post( '/', 'App\Controllers\UserController@loginPost' );
 
 $router->run();

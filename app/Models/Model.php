@@ -18,8 +18,8 @@ abstract class Model
 
     public function isLibelleUnique( string $libelle ): bool
  {
-        $statement = $this->db->getPDO()->prepare( 'SELECT COUNT(*) FROM AnneeScolaire WHERE nom_annee = :nom_annee' );
-        $statement->bindParam( ':nom_annee', $libelle );
+        $statement = $this->db->getPDO()->prepare( 'SELECT COUNT(*) FROM '.$this->table.' WHERE libelle = :libelle' );
+        $statement->bindParam( ':libelle', $libelle );
         $statement->execute();
 
         return $statement->fetchColumn() == 0;
@@ -27,15 +27,22 @@ abstract class Model
 
     public function find( $id )
  {
-        $statement = $this->db->getPDO()->prepare( 'SELECT * FROM Anneescolaire WHERE id = :id' );
+        $statement = $this->db->getPDO()->prepare( 'SELECT * FROM '.$this->table.' WHERE id = :id' );
         $statement->execute( [ 'id' => $id ] );
         return $statement->fetch();
     }
 
     public function destroy( int $id )
  {
-        $statement = $this->db->getPDO()->prepare( 'DELETE FROM Anneescolaire WHERE id = :id' );
+        $statement = $this->db->getPDO()->prepare( 'DELETE FROM '.$this->table.' WHERE id = :id' );
         $statement->execute( [ 'id' => $id ] );
         return $statement->fetch();
+    }
+
+    public function findStatut()
+ {
+        $statement = $this->db->getPDO()->prepare( 'SELECT * FROM AnneeScolaire WHERE statut = 1' );
+        $statement->execute();
+        return $statement->fetch () ;
     }
 }

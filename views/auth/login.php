@@ -58,7 +58,7 @@
                 Login
             </div>
             <div class="formulaire  dflex jcc">
-                <form action="/login" method="post">
+                <form action="/" method="post">
                     <label for="telephone">Téléphone:</label><br>
                     <input type="tel" id="telephone" name="telephone" placeholder="Numéro de téléphone" required><br>
                     <label for="password">Mot de passe :</label><br>
@@ -67,7 +67,7 @@
                         <a href=""> Mot de passe oublié </a>
                     </div>
                     <div class="dflex jcc aic "><button type="submit">
-                        <a href="\" style="text-transform: none; color: white;"  >Se connecter</a>
+                        <a href="\niveau" style="text-transform: none; color: white;"  >Se connecter</a>
                     </button></div>
                 </form>
             </div>
