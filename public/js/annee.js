@@ -22,9 +22,9 @@ setTimeout(function () {
     }, 2500);
 
 function validateForm() {
-    var anneeScolaireInput = document.getElementById("anneeScolaireInput").value;
-    var annees = anneeScolaireInput.split("-");
-    var regex = /^(\d{4}-\d{4})$/;
+    let anneeScolaireInput = document.getElementById("anneeScolaireInput").value;
+    let annees = anneeScolaireInput.split("-");
+    let regex = /^(\d{4}-\d{4})$/;
 
 
     if (anneeScolaireInput.length === 0) {
@@ -41,4 +41,13 @@ function validateForm() {
     return true;
 }
 let envoi = document.getElementById("envoi");
-envoi.addEventListener("click", validateForm)   
+let ajout = document.getElementById("ajout");
+envoi.addEventListener("click", validateForm) 
+
+
+ajout.addEventListener("click", validateForm)   
+const modal = document.querySelector('.modal-content');
+
+// setTimeout(function () {
+//     modal.style.display = 'none';
+//     }, 2500);

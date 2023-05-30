@@ -7,19 +7,37 @@ use App\Models\NiveauModel;
 class NiveauController extends Controller
 {
 
-    public function show()
+    public function showNiveau()
     {
+        $Niveau = new NiveauModel($this->getDB());
+        $post = $Niveau->allCycle();
+        $errorMessage = '';
 
-        $post = (new NiveauModel($this->getDB()))->allCycle();
-        return $this->view('niveau.niveau', compact('post', ));
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $niveau = $_POST['niveau'];
 
+            if (!$Niveau->isLibelleUnique($niveau)) {
+                $errorMessage = 'Ce cycle existe déjà.';
+            } else {
+                $Niveau->add($niveau);
+
+                header('Location:  /niveau');
+
+                exit();
+            }
+
+        }
+
+        return $this->view('niveau.niveau', compact('post', 'errorMessage'));
+    }
+    public function destroyNiveau(int $id)
+    {
+        (new NiveauModel($this->getDB()))->destroy($id);
+
+        header('Location: /niveau');
     }
 
 
 
-    public function allClasse($id)
-    {
-        $classe = (new NiveauModel($this->getDB()))->allClasse($id);
-        return $this->view('classe.classe', compact('classe', ));
-    }
+
 }

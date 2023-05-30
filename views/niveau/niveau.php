@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="css/niveau.css">
+<link rel="stylesheet" href="css/annee.css">
+
 
 <div class="contenainer dflex fdc">
 
@@ -19,11 +21,19 @@
               <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="/niveau" method="post">
-                <label>libelle</label>
-                <input type="text" name="niveau" id="niveau">
-                <input name="" id="envoi" class="btn btn-primary" type="submit" value="Ajouter">
+              <form action="/niveau" method="post" class="monform">
+                <div class="erreur dflex jcc aic "></div>
+                <div>
+                  <label>libelle</label>
+                  <input type="text" name="niveau" id="anneeScolaireInput" required>
+                  <input name="" id="envoi" class="btn btn-primary" type="submit" value="Ajouter">
+                </div>
               </form>
+              <?php if (!empty($params['errorMessage'])): ?>
+                <div class="error-message dflex jcc aic">
+                  <?php echo $params['errorMessage'] ?>
+                </div>
+              <?php endif; ?>
             </div>
           </div>
         </div>
@@ -40,15 +50,20 @@
         <thead>
           <tr>
             <th>Cycle</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
 
           <?php foreach ($params['post'] as $niveau): ?>
             <tr>
-              <td><a href="/niveau/classe/<?= $niveau->id ?>">
-                  <?= $niveau->libelle ?>
-                </a></td>
+              <td>
+                <?= $niveau->libelle ?>
+              </td>
+              <td>
+                <a href="/niveau/classe/<?= $niveau->id ?>" class="btn btn-primary ">Voir</a>
+                <a href="/niveau/delete/<?= $niveau->id ?>" class="btn btn-danger ">Supprimer</a>
+              </td>
             </tr>
           <?php endforeach; ?>
         </tbody>
@@ -56,3 +71,4 @@
     </section>
   </main>
 </div>
+<script src="js/annee.js"></script>
