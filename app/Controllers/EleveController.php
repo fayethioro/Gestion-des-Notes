@@ -11,7 +11,8 @@ class EleveController extends Controller
     {
         $eleve = (new ClasseModel($this->getDB()))->allEleve($id);
         $niveau = (new ClasseModel($this->getDB()))->getIdCycleById($id);
-        return $this->view('eleve.eleve', compact('eleve', 'id', 'niveau'));
+        $name = (new ClasseModel($this->getDB()))->getNameById($id);
+        return $this->view('eleve.eleve', compact('eleve', 'id', 'niveau', 'name'));
     }
 
     public function AjouterEleve()
@@ -32,7 +33,7 @@ class EleveController extends Controller
             // Appeler la méthode d'insertion des données
             $eleveModel->insertEleve($prenom, $nom, $photo, $date_naissance, $profil, $sexe, $id_classe);
 
-            header('Location: /niveau/classe/eleve/' . $_POST['id_classe']);
+            header('Location: /classe/liste/' . $_POST['id_classe']);
             exit();
         }
 

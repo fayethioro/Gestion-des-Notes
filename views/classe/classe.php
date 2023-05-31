@@ -54,7 +54,7 @@
                     echo $_SESSION['statut'];
                     ?>
                 </span></h3>
-
+            <!-- <?php echo password_hash('motdepasse', PASSWORD_DEFAULT); ?> -->
             <table>
                 <thead>
                     <tr>
@@ -73,7 +73,7 @@
                                 <!-- <?= $niveau->nombre_eleve ?> -->
                             </td>
                             <td>
-                                <a href="/niveau/classe/eleve/<?= $niveau->id ?>" class="btn btn-primary ">Voir</a>
+                                <a href="/classe/liste/<?= $niveau->id ?>" class="btn btn-primary ">Voir</a>
                                 <a href="/niveau/classe/delete/<?= $niveau->id_cycle ?>"
                                     class="btn btn-danger disabled ">Supprimer</a>
                             </td>

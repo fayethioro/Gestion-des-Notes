@@ -27,9 +27,9 @@ $router->get('/niveau/classe/delete/:id', 'App\Controllers\ClasseController@dest
 $router->get('/niveau/classe/ajouter', 'App\Controllers\ClasseController@ajouterClasse');
 $router->post('/niveau/classe/ajouter', 'App\Controllers\ClasseController@ajouterClasse');
 
-$router->get('/niveau/classe/eleve/:id', 'App\Controllers\EleveController@allEleve');
-$router->get('/niveau/classe/eleveajouter', 'App\Controllers\EleveController@ajouterEleve');
-$router->post('/niveau/classe/eleve/ajouter', 'App\Controllers\EleveController@ajouterEleve');
+$router->get('/classe/liste/:id', 'App\Controllers\EleveController@allEleve');
+$router->get('/classe/liste/ajouter', 'App\Controllers\EleveController@ajouterEleve');
+$router->post('/classe/liste/ajouter', 'App\Controllers\EleveController@ajouterEleve');
 
 
 

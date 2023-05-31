@@ -21,49 +21,73 @@
                         </div>
                         <div class="modal-body">
                             <div>
-                                <form method="POST" action="/niveau/classe/eleve/ajouter">
+                                <form method="POST" action="/classe/liste/ajouter">
                                     <div class="dflex fdc">
-                                        <div> <label for="prenom">Prénom :</label>
-                                            <input type="text" name="prenom" id="prenom" required>
-                                            <br>
+                                        <div>
+                                            <div>
+                                                <label for="photo">Photo :</label>
+                                                <input type="text" name="photo" id="photo">
+                                                <br>
+                                            </div>
+                                            <div class="dflex jcc">
+                                                <div> <label for="prenom">Prénom :</label>
+                                                    <input type="text" name="prenom" id="prenom" required>
+                                                    <br>
+                                                </div>
 
-                                            <label for="nom">Nom :</label>
-                                            <input type="text" name="nom" id="nom" required>
-                                            <br>
+                                                <div>
+                                                    <label for="nom">Nom :</label>
+                                                    <input type="text" name="nom" id="nom" required>
+                                                    <br>
+                                                </div>
+                                            </div>
 
-                                            <label for="photo">Photo :</label>
-                                            <input type="text" name="photo" id="photo">
-                                            <br>
 
-                                            <label for="date_naissance">Date de naissance :</label>
-                                            <input type="text" name="date_naissance" id="date_naissance">
-                                            <br>
 
-                                            <label for="profil">Profil :</label>
-                                            <input type="text" name="profil" id="profil" required>
-                                            <br>
+                                            <div class="dflex jcc">
+                                                <div><label for="date_naissance">Date de naissance :</label>
+                                                    <input type="text" name="date_naissance" id="date_naissance">
+                                                    <br>
+                                                </div>
 
-                                            <label for="sexe">Sexe :</label>
-                                            <input type="radio" name="sexe" id="sexe_masculin" value="Masculin"
-                                                required>
-                                            <label for="sexe_masculin">Masculin</label>
-                                            <input type="radio" name="sexe" id="sexe_feminin" value="Féminin" required>
-                                            <label for="sexe_feminin">Féminin</label>
-                                            <br>
+                                                <div>
+                                                    <label for="profil">Profil :</label>
+                                                    <input type="text" name="profil" id="profil" required>
+                                                    <br>
+                                                </div>
+                                            </div>
 
-                                            <label for="id_classe">ID de la classe :</label>
-                                            <input type="text" name="id_classe" id="id_classe" value=" <?php
-                                            echo $params['id'];
-                                            ?>" required>
-                                            <br>
+                                            <div class="dflex jcc">
+
+                                                <div>
+                                                    <label for="sexe">Sexe :</label>
+                                                    <input type="radio" name="sexe" id="sexe_masculin" value="Masculin"
+                                                        required>
+                                                    <label for="sexe_masculin">Masculin</label>
+                                                    <input type="radio" name="sexe" id="sexe_feminin" value="Féminin"
+                                                        required>
+                                                    <label for="sexe_feminin">Féminin</label>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                            <div class="dflex jcc">
+                                                <div>
+
+                                                    <label for="id_classe"> classe :</label>
+                                                    <input class="disabled" type="button" name="id_classe"
+                                                        id="id_classe" value=" <?php
+                                                        echo $params['name']->libelle;
+                                                        ?>" required>
+                                                    <br>
+                                                </div>
+                                                <div class="niveaueleve">
+                                                    <?php
+                                                    echo $params['niveau']->id_cycle;
+                                                    ?>
+                                                </div>
+                                            </div>
+                                            <div><input class="btn btn-primary" type="submit" value="Ajouter"></div>
                                         </div>
-                                        <div class="niveaueleve">
-                                            <?php
-                                            echo $params['niveau']->id_cycle;
-                                            ?>
-                                        </div>
-                                        <div><input class="btn btn-primary" type="submit" value="Ajouter"></div>
-                                    </div>
                                 </form>
 
 

@@ -47,8 +47,9 @@
 
             </ul>
         </nav>
-       
+
     </header>
+
     <div class="container">
         <?= $content ?>
     </div>

@@ -68,5 +68,13 @@ class ClasseModel extends Model
         return $statement->fetch();
 
     }
+    public function getNameById($id)
+    {
+        $sql = "SELECT libelle FROM classe WHERE id = :id limit 1";
+        $statement = $this->db->getPDO()->prepare($sql);
+        $statement->execute(['id' => $id]);
+        return $statement->fetch();
+
+    }
 
 }
