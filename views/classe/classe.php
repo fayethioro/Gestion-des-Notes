@@ -70,8 +70,10 @@
                                 <?= $niveau->libelle ?>
                             </td>
                             <td>
+                                <!-- <?= $niveau->nombre_eleve ?> -->
+                            </td>
                             <td>
-                                <a href="#" class="btn btn-primary ">Voir</a>
+                                <a href="/niveau/classe/eleve/<?= $niveau->id ?>" class="btn btn-primary ">Voir</a>
                                 <a href="/niveau/classe/delete/<?= $niveau->id_cycle ?>"
                                     class="btn btn-danger disabled ">Supprimer</a>
                             </td>

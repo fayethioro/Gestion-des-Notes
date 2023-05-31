@@ -74,8 +74,9 @@ button {
     height: 50px;
 }
 
-.cycle{
+.cycle, .niveaueleve{
     border: solid 1px gray;
     padding: 5px;
     
 }
+.niveaueleve{width: 100px;}

@@ -23,13 +23,16 @@ $router->post('/niveau', 'App\Controllers\NiveauController@showNiveau');
 $router->get('/niveau/delete/:id', 'App\Controllers\NiveauController@destroyNiveau');
 
 $router->get('/niveau/classe/:id', 'App\Controllers\ClasseController@allClasse');
-
-// Ajouter une nouvelle route pour l'ajout de classe
+$router->get('/niveau/classe/delete/:id', 'App\Controllers\ClasseController@destroyClasse');
 $router->get('/niveau/classe/ajouter', 'App\Controllers\ClasseController@ajouterClasse');
 $router->post('/niveau/classe/ajouter', 'App\Controllers\ClasseController@ajouterClasse');
 
+$router->get('/niveau/classe/eleve/:id', 'App\Controllers\EleveController@allEleve');
+$router->get('/niveau/classe/eleveajouter', 'App\Controllers\EleveController@ajouterEleve');
+$router->post('/niveau/classe/eleve/ajouter', 'App\Controllers\EleveController@ajouterEleve');
 
-$router->get('/niveau/classe/delete/:id', 'App\Controllers\ClasseController@destroyClasse');
+
+
 
 
 $router->get('/', 'App\Controllers\UserController@login');

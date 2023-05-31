@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\AnneeModel;
-use FFI\Exception;
 use PDO;
 
 class ClasseModel extends Model
@@ -32,6 +30,25 @@ class ClasseModel extends Model
         return $statement->fetchAll();
 
     }
+
+    public function allEleve($id)
+    {
+        $statement = $this->db->getPDO()->prepare('SELECT e.id, e.prenom_eleve, e.nom_eleve,e.date_de_naissance
+        FROM Eleve e
+        JOIN Classe c ON e.id_classe = c.id
+        JOIN AnneeScolaire a ON c.id_annee = a.id
+        WHERE a.statut = 1 and c.id = :id');
+        $statement->execute(['id' => $id]);
+        return $statement->fetchAll();
+    }
+    public function countEleve($id)
+    {
+        $statement = $this->db->getPDO()->prepare('SELECT COUNT(*) as total_eleve
+        FROM Eleve
+        WHERE id_classe = :id');
+        $statement->execute(['id' => $id]);
+        return $statement->fetchColumn();
+    }
     public function getActiveAnneeId()
     {
         $sql = "SELECT id FROM AnneeScolaire WHERE statut = 1";
@@ -43,6 +60,13 @@ class ClasseModel extends Model
             return $result['id'];
         }
     }
+    public function getIdCycleById($id)
+    {
+        $sql = "SELECT id_cycle FROM classe WHERE id = :id limit 1";
+        $statement = $this->db->getPDO()->prepare($sql);
+        $statement->execute(['id' => $id]);
+        return $statement->fetch();
 
+    }
 
 }
