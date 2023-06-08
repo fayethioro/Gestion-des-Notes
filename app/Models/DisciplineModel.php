@@ -68,9 +68,10 @@ class DisciplineModel extends Model
             }
 
             $existingCode = $this->checkExistingCode($code);
-            $index = 1;
+
 
             while ($existingCode) {
+                $index = 1;
                 $code .= $index;
                 $existingCode = $this->checkExistingCode($code);
                 $index++;

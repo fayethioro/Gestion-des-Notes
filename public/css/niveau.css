@@ -148,6 +148,7 @@ text-align: center;}
     display: none;
 }
 
-input[type="checkbox"]:checked{
-    color: red;
+input[type="checkbox"]
+{
+    background: red;
 }

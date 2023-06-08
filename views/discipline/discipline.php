@@ -16,7 +16,7 @@
     <header>
         <div class="entete dflex  ">
             <div class="logo">
-                <!-- <img src="images/logo.png" alt=""> -->
+                <img src="/../../images/logo.png" alt="">
             </div>
             <div class="info dflex ">
                 <div><i class="fa-solid fa-house"></i><span>Breukh’S Cool</span></div>
@@ -44,8 +44,7 @@
     <div class="container">
         <main>
             <h2>Ajouter une gestion de discipline</h2>
-            <form action="http://localhost:8081/disciplines/add" id="gestion-discipline-form"
-                class="formulaire dflex jcc fdc aic">
+            <form action="" id="gestion-discipline-form" class="formulaire dflex jcc fdc aic">
                 <div class="dflex jca form">
 
                     <div>
@@ -66,8 +65,8 @@
                         <label for="groupe">Groupe de discipline:</label><br>
                         <select id="groupe" name="groupe">
                             <option value="">Sélectionner un groupe</option>
-                            <option value="nouveau" class="nouveau">
-                                <button>nouveau</button>
+                            <option value="nouveau" class="mon-groupe">
+                                nouveau
                             </option>
                         </select>
                     </div>

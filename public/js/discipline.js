@@ -1,7 +1,5 @@
 // Fonction pour charger les cycles depuis le serveur
-
-
-const nouveau = document.querySelector('.nouveau');
+const nouveau = document.querySelector('.mon-groupe').value;
 console.log(nouveau);
 function loadCycles() {
   fetch('/cycles')
@@ -58,7 +56,6 @@ function loadClasses() {
         option.textContent = classe.libelle;
         classeSelect.appendChild(option);
       });
-      console.log(classeSelect);
     })
     .catch(error => {
       console.error('Une erreur s\'est produite lors du chargement des classes:', error);
@@ -74,6 +71,7 @@ function loadGroupes() {
     .then(groupes => {
       // Sélectionner l'élément HTML pour afficher les groupes de disciplines
       const groupeSelect = document.getElementById('groupe');
+      console.log(groupeSelect);
 
       // Parcourir les groupes de disciplines et créer les options du sélecteur
       groupes.forEach(groupe => {
@@ -81,12 +79,9 @@ function loadGroupes() {
         option.value = groupe.id;
         option.textContent = groupe.libelle;
         groupeSelect.appendChild(option);
-        
-
       });
       const options = document.createElement('option');
 
-    
 
         options.innerHTML = '<option value="null">Autre</option>';
         groupeSelect.appendChild(options);
@@ -171,7 +166,7 @@ async function addDiscipline() {
     body: objet
   });
   const r = await result.text();
-  console.log(r);
+  // console.log(r);
   if (result.ok) {
     loadDisciplines();
            
@@ -181,7 +176,7 @@ async function addDiscipline() {
 }
 
 const table = document.querySelector("#discipline-table");
-console.log(table);
+// console.log(table);
 // Fonction pour ajouter une gestion de discipline
 // Fonction pour supprimer les disciplines sélectionnées
 async function deleteDisciplines() {
@@ -191,7 +186,7 @@ async function deleteDisciplines() {
     .filter(checkbox => checkbox.checked)
     .map(checkedBox => +checkedBox.value);
     
-  console.log(disciplineIds);
+  // console.log(disciplineIds);
   const fd = new FormData();
   fd.append('ids', disciplineIds);
 
@@ -238,6 +233,6 @@ console.log(modalformulaire);
 
 
 nouveau.addEventListener('click' , ()=>{
-  console.log('ok');
+  alert('ok');
   modalformulaire.style.display = 'block'; 
 });

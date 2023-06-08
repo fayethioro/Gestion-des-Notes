@@ -49,9 +49,6 @@ class ClasseController extends Controller
         }
     }
 
-
-
-
     public function getClasses($id)
     {
         $classes = (new NiveauModel($this->getDB()))->allClasse($id);
@@ -63,8 +60,6 @@ class ClasseController extends Controller
 
         // Retourner les disciplines au format JSON
         echo json_encode($disciplines);
-
-        // return $this->view('discipline.discipline', compact('name'));
 
     }
 

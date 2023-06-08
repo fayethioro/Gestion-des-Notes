@@ -39,6 +39,7 @@ $router->get('/discipline/gestion', 'App\Controllers\DisciplineController@showAd
 $router->post('/disciplines/add', 'App\Controllers\DisciplineController@addDiscipline');
 $router->post('/disciplines/supprimer', 'App\Controllers\DisciplineController@deleteDisciplines');
 
+
 $router->get('/groupes', 'App\Controllers\GroupeDisciplineController@getGroupes');
 
 $router->get('/', 'App\Controllers\UserController@login');
