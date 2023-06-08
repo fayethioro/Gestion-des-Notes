@@ -74,7 +74,16 @@ class ClasseModel extends Model
         $statement = $this->db->getPDO()->prepare($sql);
         $statement->execute(['id' => $id]);
         return $statement->fetch();
-
+    }
+    public function getDisciplinesByClasse($classeId)
+    {
+        $statement = $this->db->getPDO()->prepare('SELECT d.id, d.code_discipline, d.libelle,
+        d.id_groupe_discipline,d.id_classe
+        FROM Discipline d
+        WHERE d.id_classe = :classeId;
+        ');
+        $statement->execute(['classeId' => $classeId]);
+        return $statement->fetchAll();
     }
 
 }

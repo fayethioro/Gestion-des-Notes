@@ -9,7 +9,7 @@ class NiveauController extends Controller
 
     public function showNiveau()
     {
-        $Niveau = new NiveauModel($this->getDB());
+        $Niveau = (new NiveauModel($this->getDB()));
         $post = $Niveau->allCycle();
         $errorMessage = '';
 
@@ -27,7 +27,6 @@ class NiveauController extends Controller
             }
 
         }
-
         return $this->view('niveau.niveau', compact('post', 'errorMessage'));
     }
     public function destroyNiveau(int $id)
@@ -37,7 +36,10 @@ class NiveauController extends Controller
         header('Location: /niveau');
     }
 
-
-
+    public function getCycles()
+    {
+        $cycles = (new NiveauModel($this->getDB()))->AllCycle();
+        echo json_encode($cycles);
+    }
 
 }

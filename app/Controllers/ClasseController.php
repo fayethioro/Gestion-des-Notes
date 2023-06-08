@@ -49,4 +49,25 @@ class ClasseController extends Controller
         }
     }
 
+
+
+
+    public function getClasses($id)
+    {
+        $classes = (new NiveauModel($this->getDB()))->allClasse($id);
+        echo json_encode($classes);
+    }
+    public function getDisciplines($classeId)
+    {
+        $disciplines = (new ClasseModel($this->getDB()))->getDisciplinesByClasse($classeId);
+
+        // Retourner les disciplines au format JSON
+        echo json_encode($disciplines);
+
+        // return $this->view('discipline.discipline', compact('name'));
+
+    }
+
+
+
 }

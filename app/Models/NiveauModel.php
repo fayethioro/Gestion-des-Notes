@@ -33,4 +33,6 @@ class NiveauModel extends Model
         return $statement->fetch();
 
     }
+
+
 }

@@ -17,6 +17,9 @@ body {
 .jcc {
     justify-content: center;
 }
+.jsa{
+    justify-content:space-around;
+}
 
 .aic {
     align-items: center;

@@ -39,10 +39,7 @@
                     <a class="nav-link" href="/niveau">Cycle</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Liste des eleves</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Liste des classes</a>
+                    <a class="nav-link" href="/discipline/gestion">Gestion des disciplines</a>
                 </li>
 
             </ul>
