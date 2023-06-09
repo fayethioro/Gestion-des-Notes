@@ -1,6 +1,8 @@
 // Fonction pour charger les cycles depuis le serveur
 const nouveau = document.querySelector('.mon-groupe').value;
-console.log(nouveau);
+
+
+// console.log(nouveau);
 function loadCycles() {
   fetch('/cycles')
     .then(response => response.json())
@@ -35,14 +37,11 @@ function loadClasses() {
     document.getElementById('classe').appendChild(message);
     return;
   }
-  
 
   fetch(`/classes/${cycleId}`)
     .then(response => response.json())
     .then(classes => {
       const classeSelect = document.getElementById('classe');
-
-      
       classeSelect.innerHTML = '';
 
       const defaultOption = document.createElement('option');
@@ -71,8 +70,9 @@ function loadGroupes() {
     .then(groupes => {
       // Sélectionner l'élément HTML pour afficher les groupes de disciplines
       const groupeSelect = document.getElementById('groupe');
-      console.log(groupeSelect);
 
+      // const groupet = document.getElementById('groupe').value;
+      // console.log(groupeSelect);
       // Parcourir les groupes de disciplines et créer les options du sélecteur
       groupes.forEach(groupe => {
         const option = document.createElement('option');
@@ -80,12 +80,7 @@ function loadGroupes() {
         option.textContent = groupe.libelle;
         groupeSelect.appendChild(option);
       });
-      const options = document.createElement('option');
-
-
-        options.innerHTML = '<option value="null">Autre</option>';
-        groupeSelect.appendChild(options);
-
+      console.log(groupeSelect);
     })
     .catch(error => {
       console.error('Une erreur s\'est produite lors du chargement des groupes de disciplines:', error);
@@ -94,7 +89,8 @@ function loadGroupes() {
 
 // Fonction pour charger les disciplines en fonction de la classe sélectionnée
 function loadDisciplines() {
-  const classeId = document.getElementById('classe').value;
+  const selectClasse = document.getElementById('classe');
+  const classeId = selectClasse.value;
   if (classeId === '') {
     const message = document.createElement('p');
     message.textContent = 'Veuillez sélectionner une classe.';
@@ -103,7 +99,7 @@ function loadDisciplines() {
     return;
   }
   const classeDiscipline = document.querySelector('.classeDiscipline');
-  classeDiscipline.textContent =  classeId;
+  classeDiscipline.textContent =  selectClasse.selectedOptions[0].innerText;
   
   fetch(`/classes/${classeId}/disciplines`)
     .then(response => response.json())
@@ -126,7 +122,7 @@ function loadDisciplines() {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.value = discipline.id;
-        checkbox.checked = true;
+        // checkbox.checked = true;
         checkboxCell.appendChild(checkbox);
         row.appendChild(checkboxCell);
 
@@ -157,58 +153,115 @@ async function addDiscipline() {
   objet.append('discipline', discipline );
 
   // Vérifier si le champ de discipline est vide
+  if (classeId.trim() === '') {
+    alert('Veuillez selectionner une classe');
+    return;
+  } 
+  if (groupeId.trim() === '') {
+    alert('Veuillez selectionner un groupe');
+    return;
+  } 
   if (discipline.trim() === '') {
     alert('Veuillez saisir une discipline');
     return;
   }
+
   const result = await fetch('/disciplines/add', {
     method: 'POST',
     body: objet
   });
   const r = await result.text();
-  // console.log(r);
+  console.log(r);
   if (result.ok) {
     loadDisciplines();
-           
+    // console.log('bien');
           } else {
-            console.error('Une erreur s\'est produite lors de l\'ajout la discipline');
+            alert.error('Une erreur s\'est produite lors de l\'ajout la discipline');
           }
 }
 
 const table = document.querySelector("#discipline-table");
-// console.log(table);
-// Fonction pour ajouter une gestion de discipline
 // Fonction pour supprimer les disciplines sélectionnées
 async function deleteDisciplines() {
   console.log(table.querySelectorAll('input[type=checkbox]'));
+  
    const disciplineIds = Array
     .from(document.querySelectorAll('input[type=checkbox]'))
     .filter(checkbox => checkbox.checked)
     .map(checkedBox => +checkedBox.value);
     
   // console.log(disciplineIds);
-  const fd = new FormData();
-  fd.append('ids', disciplineIds);
+  const formData = new FormData();
+  formData.append('disciplineIds', disciplineIds.join(','));
+
 
   const result = await fetch('/disciplines/supprimer', {
     method: 'POST',
-    body: fd
+    body:  formData
   });
   const r = await result.text();
+  console.log(r);
   if (result.ok) {
   loadClasses();
+  alert('Disciplines supprimées avec succès');
   loadDisciplines();
-         
         } else {
           console.error('Une erreur s\'est produite lors de la suppression des disciplines');
         }
 }
+const groupeSelect = document.getElementById('groupe');
+
+groupeSelect .addEventListener('change', function() {
+  if(groupeSelect.value == 0)
+      modalformulaire.style.display = 'block';
+});
+
+const modalformulaire = document.querySelector('.modal-formulaire');
+// console.log(modalformulaire);
+const fermer  = document.querySelector('.fermer');
+fermer .addEventListener('click', function() {
+  
+      modalformulaire.style.display = 'none';
+});
+
+async function addGroupeDiscipline() {
+  const libelle = document.querySelector('.libelle').value;
+
+  const formData = new FormData();
+  formData.append('libelle', libelle);
+
+  const result = await fetch('/groupes/add', {
+    method: 'POST',
+    body: formData
+  });
+
+  const response = await result.text();
+  console.log(response);
+
+  if (result.ok) {
+      
+    alert('Discipline ajoutée au groupe avec succès');
+    const selectGroup = document.getElementById('groupe');
+    selectGroup.value = response.groupId;
+    // console.log(selectGroup);
+    selectGroup.innerHTML = '';
+    console.log(selectGroup);
+    loadGroupes();
+    // Effectuer des actions supplémentaires si nécessaire
+  } else {
+    console.error('Une erreur s\'est produite lors de l\'ajout de la discipline au groupe');
+  }
+}
+// console.log(addGroupeDiscipline());
+
+addButtonmodal = document.getElementById('add-buttonmodal');
+
+
 // Fonction d'initialisation
 function init() {
   loadCycles();
   loadGroupes();
   loadDisciplines();
-
   const cycleSelect = document.getElementById('cycle');
   cycleSelect.addEventListener('change', loadClasses);
 
@@ -219,20 +272,19 @@ function init() {
   addButton.addEventListener('click', function() {
     addDiscipline();
   });
+  addButtonmodal.addEventListener('click', function() {
+   
+    addGroupeDiscipline();
+    modalformulaire.style.display = 'none';
+    // loadGroupes();
+  });
 
   const deleteButton = document.getElementById('delete-button');
   deleteButton.addEventListener('click', deleteDisciplines);
 }
-
-
 // Appeler la fonction d'initialisation lors du chargement de la page
 document.addEventListener('DOMContentLoaded', init);
 
-const modalformulaire = document.querySelector('.modal-formulaire');
-console.log(modalformulaire);
 
 
-nouveau.addEventListener('click' , ()=>{
-  alert('ok');
-  modalformulaire.style.display = 'block'; 
-});
+

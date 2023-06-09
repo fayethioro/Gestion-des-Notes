@@ -77,13 +77,14 @@ class ClasseModel extends Model
     }
     public function getDisciplinesByClasse($classeId)
     {
-        $statement = $this->db->getPDO()->prepare('SELECT d.id, d.code_discipline, d.libelle,
-        d.id_groupe_discipline,d.id_classe
-        FROM Discipline d
-        WHERE d.id_classe = :classeId;
-        ');
-        $statement->execute(['classeId' => $classeId]);
-        return $statement->fetchAll();
+        $pdo = $this->db->getPDO();
+        $query = "SELECT DISTINCT d.id, d.code_discipline, d.libelle, cd.id_classe
+              FROM Discipline AS d
+              INNER JOIN ClasseDiscipline AS cd ON d.id = cd.id_discipline
+              WHERE cd.id_classe = :classeId";
+        $statement = $pdo->prepare($query);
+        $statement->bindParam(':classeId', $classeId);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-
 }

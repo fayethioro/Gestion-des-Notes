@@ -14,4 +14,13 @@ class GroupeDisciplineModel extends Model
         $result = $pdo->query($query);
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function insertGroupeDiscipline($libelle)
+    {
+        $pdo = $this->db->getPDO();
+        $query = "INSERT INTO groupediscipline (libelle) VALUES (:libelle)";
+        $statement = $pdo->prepare($query);
+        $statement->bindParam(':libelle', $libelle);
+        $statement->execute();
+    }
+
 }

@@ -65,7 +65,7 @@
                         <label for="groupe">Groupe de discipline:</label><br>
                         <select id="groupe" name="groupe">
                             <option value="">Sélectionner un groupe</option>
-                            <option value="nouveau" class="mon-groupe">
+                            <option value="0" class="mon-groupe">
                                 nouveau
                             </option>
                         </select>
@@ -104,24 +104,25 @@
             <div class="modal-formulaire">
                 <form>
                     <label for="discipline">Groupe discipline:</label><br>
-                    <input type="text" id="groupediscipline" name="groupediscipline" placeholder="Saisir une groupe"
-                        required>
+                    <input type="text" id="groupediscipline" class="libelle" name="libelle"
+                        placeholder="Saisir une groupe" required>
                     <br>
                     <div class="dflex jcc form">
 
-                        <input type="button" id="add-button" class="btn btn-primary" value="Ajouter">
-                    </div>
+                        <input type="button" id="add-buttonmodal" class="btn btn-primary ajout" value="Ajouter">
+                        <input type="button" id="add-buttonf" class="btn btn-danger fermer" value="Fermer">
 
+                    </div>
+                </form>
             </div>
-            </form>
 
     </div>
     </main>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-    crossorigin="anonymous"></script>
+<script src=" https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>

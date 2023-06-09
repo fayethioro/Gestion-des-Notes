@@ -30,17 +30,27 @@ $router->get('/niveau/classe/ajouter', 'App\Controllers\ClasseController@ajouter
 $router->post('/niveau/classe/ajouter', 'App\Controllers\ClasseController@ajouterClasse');
 $router->get('/classes/:id', 'App\Controllers\ClasseController@getClasses');
 $router->get('/classes/:id/disciplines', 'App\Controllers\ClasseController@getDisciplines');
+$router->get('/classe/coef', 'App\Controllers\ClasseController@showAddGestionDiscipline');
+
 
 $router->get('/classe/liste/:id', 'App\Controllers\EleveController@allEleve');
 $router->get('/classe/liste/ajouter', 'App\Controllers\EleveController@ajouterEleve');
 $router->post('/classe/liste/ajouter', 'App\Controllers\EleveController@ajouterEleve');
 
+
 $router->get('/discipline/gestion', 'App\Controllers\DisciplineController@showAddGestionDisciplineForm');
+
 $router->post('/disciplines/add', 'App\Controllers\DisciplineController@addDiscipline');
+$router->get('/disciplines', 'App\Controllers\DisciplineController@getAllDisciplines');
+
+
 $router->post('/disciplines/supprimer', 'App\Controllers\DisciplineController@deleteDisciplines');
 
 
+
+
 $router->get('/groupes', 'App\Controllers\GroupeDisciplineController@getGroupes');
+$router->post('/groupes/add', 'App\Controllers\GroupeDisciplineController@addDisciplineGroupes');
 
 $router->get('/', 'App\Controllers\UserController@login');
 $router->post('/', 'App\Controllers\UserController@loginPost');

@@ -12,4 +12,20 @@ class GroupeDisciplineController extends Controller
         // Retourner les groupes au format JSON
         echo json_encode($groupes);
     }
+    public function addDisciplineGroupes()
+    {
+        echo $_POST['libelle'];
+
+        if (isset($_POST['libelle'])) {
+            $libelle = $_POST['libelle'];
+            echo $libelle;
+
+            (new GroupeDisciplineModel($this->getDB()))->insertGroupeDiscipline($libelle);
+
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'error' => 'libelle Manquant']);
+        }
+    }
+
 }

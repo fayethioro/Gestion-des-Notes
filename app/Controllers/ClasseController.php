@@ -57,12 +57,25 @@ class ClasseController extends Controller
     public function getDisciplines($classeId)
     {
         $disciplines = (new ClasseModel($this->getDB()))->getDisciplinesByClasse($classeId);
-
         // Retourner les disciplines au format JSON
         echo json_encode($disciplines);
-
     }
 
+    // public function getponderation()
+    // {
+    //     $disciplines = (new ClasseModel($this->getDB()))->getDisciplinesByClasse($classeId);
+    //     // Retourner les disciplines au format JSON
+    //     echo json_encode($disciplines);
+    // }
+
+    public function showAddGestionDiscipline()
+    {
+        // Charger le contenu HTML du formulaire
+        $content = file_get_contents('../views/classe/ponderation.php');
+
+        // Afficher le contenu HTML
+        echo $content;
+    }
 
 
 }
