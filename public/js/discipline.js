@@ -1,8 +1,5 @@
 // Fonction pour charger les cycles depuis le serveur
 const nouveau = document.querySelector('.mon-groupe').value;
-
-
-// console.log(nouveau);
 function loadCycles() {
   fetch('/cycles')
     .then(response => response.json())
@@ -189,8 +186,6 @@ async function deleteDisciplines() {
     .from(document.querySelectorAll('input[type=checkbox]'))
     .filter(checkbox => checkbox.checked)
     .map(checkedBox => +checkedBox.value);
-    
-  // console.log(disciplineIds);
   const formData = new FormData();
   formData.append('disciplineIds', disciplineIds.join(','));
 
@@ -217,7 +212,6 @@ groupeSelect .addEventListener('change', function() {
 });
 
 const modalformulaire = document.querySelector('.modal-formulaire');
-// console.log(modalformulaire);
 const fermer  = document.querySelector('.fermer');
 fermer .addEventListener('click', function() {
   

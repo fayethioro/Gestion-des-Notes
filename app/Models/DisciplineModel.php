@@ -56,23 +56,12 @@ class DisciplineModel extends Model
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function deleteDisciplineFromClasse($disciplineId)
+    public function deleteDisciplineFromClasse($classeId, $disciplineId)
     {
         $pdo = $this->db->getPDO();
-        $query = "DELETE FROM ClasseDiscipline WHERE id_discipline = :disciplineId";
+        $query = "DELETE FROM ClasseDiscipline WHERE id_discipline = :disciplineId and id_classe = :classeId";
         $statement = $pdo->prepare($query);
         $statement->bindParam(':disciplineId', $disciplineId);
-        $statement->execute();
-    }
-
-    public function deleteDisciplines($classeId, $disciplineIds)
-    {
-        $pdo = $this->db->getPDO();
-
-        // Supprimer les disciplines
-        $query = "DELETE FROM ClasseDiscipline WHERE id_classe = :classeId 
-        AND id_discipline IN (" . implode(',', $disciplineIds) . ")";
-        $statement = $pdo->prepare($query);
         $statement->bindParam(':classeId', $classeId);
         $statement->execute();
 

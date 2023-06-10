@@ -93,16 +93,15 @@ class DisciplineController extends Controller
     public function deleteDisciplines()
     {
 
-        $disciplineIds = explode(',', $_POST['disciplineIds']);
+        if (isset($_POST['disciplineIds']) && isset($_POST['classeId'])) {
+            $disciplineId = intval($_POST['disciplineIds']);
+            $classeId = intval($_POST['classeId']);
 
-        print_r($disciplineIds);
-
-        foreach ($disciplineIds as $disciplineId) {
-            (new DisciplineModel($this->getDB()))->deleteDisciplineFromClasse($disciplineId);
+            (new DisciplineModel($this->getDB()))->deleteDisciplineFromClasse($classeId, $disciplineId);
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'error' => 'discipline ou classe manquante']);
         }
-
-        echo json_encode(['success' => true]);
-
 
     }
 
