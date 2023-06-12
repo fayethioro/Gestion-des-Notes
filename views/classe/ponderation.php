@@ -10,6 +10,7 @@
                 ?>
             </a></h2>
 
+
         <form id="update-form">
             <br>
             <table id="discipline-table">
@@ -34,12 +35,16 @@
                                 <input type="number" name="examen" id="" value="<?= $niveau['examen'] ?>">
                             </td>
                             <td>
-                                <a href="#" class="btn btn-danger"><i class="fa-regular fa-trash-can"
+                                <a href="/classe/coef/<?= $niveau['id_classe'] ?>"
+                                    class="btn btn-danger supprimer disabled"><i class="fa-regular fa-trash-can   "
                                         style="color: white;"></i>
 
                                 </a>
                             </td>
                         </tr>
+                        <!-- <input type="text" name="" id="classe" value="<?= $niveau['id_classe'] ?>">
+                        <input type="text" name="" id="discipline" value="<?= $niveau['id'] ?>"> -->
+
                     <?php endforeach; ?>
                 </tbody>
                 <!-- Tableau des disciplines -->

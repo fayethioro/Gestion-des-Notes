@@ -45,3 +45,35 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault(); 
   await updateDisciplines(); 
 });
+
+
+
+// const disciplineId = document.getElementById('discipline');
+
+
+async function deleteDisciplines() {
+  const classeId = document.getElementById('classe');
+  console.log(classeId.value);
+const disciplineId = document.getElementById('discipline');
+console.log(disciplineId.value);
+  const formData = new FormData();
+  formData.append('disciplineId', disciplineId);
+  formData.append('classeId', classeId);
+
+console.log(formData);
+  const result = await fetch('/disciplines/delete', {
+    method: 'POST',
+    body:  formData
+  });
+  const r = await result.text();
+  console.log(r);
+  if (result.ok) {
+  alert('Disciplines supprimées avec succès');
+        } else {
+          console.error('Une erreur s\'est produite lors de la suppression des disciplines');
+        }
+}
+
+const supprimer = document.querySelector('.supprimer');
+
+supprimer.addEventListener('click', deleteDisciplines);

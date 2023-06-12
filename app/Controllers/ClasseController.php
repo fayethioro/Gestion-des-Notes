@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\NiveauModel;
 use App\Models\ClasseModel;
+use App\Models\DisciplineModel;
 
 class ClasseController extends Controller
 {
@@ -75,16 +76,11 @@ class ClasseController extends Controller
         // Récupérer les données envoyées dans la requête
         $data = json_decode(file_get_contents('php://input'), true);
 
-        // foreach ($datas as $data) {
-        //     (new ClasseModel($this->getDB()))->updateDiscipline($data['libelle'], $data['ressource'], $data['examen']);
-
-        // }
-        print_r($data);
         $size = count($data);
         // Vérifier si les données sont valides
         if (!$data || !is_array($data)) {
             echo json_encode(['success' => false, 'error' => 'données invalides']);
-            return;
+            return false;
         }
         // Parcourir les mises à jour des disciplines
         else {
@@ -106,11 +102,20 @@ class ClasseController extends Controller
 
             }
 
+        }
+    }
+    public function deleteDiscipline()
+    {
 
+        if (isset($_POST['disciplineIds']) && isset($_POST['classeId'])) {
+            $disciplineId = intval($_POST['disciplineIds']);
+            $classeId = intval($_POST['classeId']);
+            echo $disciplineId;
+            (new DisciplineModel($this->getDB()))->deleteDisciplineFromClasse($classeId, $disciplineId);
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'error' => 'discipline ou classe manquante']);
         }
 
     }
-
-
-
 }

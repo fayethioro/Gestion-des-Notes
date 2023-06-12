@@ -90,17 +90,13 @@ class ClasseModel extends Model
 
     public function updateDiscipline($libelle, $ressource, $examen)
     {
-        // echo trim($libelle) . " - $ressource - $examen";
         $pdo = $this->db->getPDO();
         $query = "UPDATE Discipline SET ressource = :ressource, examen = :examen WHERE libelle = :libelle";
         $statement = $pdo->prepare($query);
         $statement->bindParam(':ressource', $ressource);
         $statement->bindParam(':examen', $examen);
         $statement->bindParam(':libelle', $libelle);
-        $result = $statement->execute();
-        // var_dump($result);
-        return $result;
+        return $statement->execute();
 
     }
-
 }

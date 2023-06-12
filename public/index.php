@@ -32,6 +32,8 @@ $router->get('/classes/:id', 'App\Controllers\ClasseController@getClasses');
 $router->get('/classes/:id/disciplines', 'App\Controllers\ClasseController@getDisciplines');
 $router->get('/classe/coef/:id', 'App\Controllers\ClasseController@getponderation');
 $router->post('/classe/update', 'App\Controllers\ClasseController@updateDisciplines');
+$router->post('/disciplines/delete', 'App\Controllers\ClasseController@deleteDiscipline');
+
 
 
 $router->get('/classe/liste/:id', 'App\Controllers\EleveController@allEleve');
