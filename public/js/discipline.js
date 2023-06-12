@@ -224,6 +224,7 @@ async function addGroupeDiscipline() {
   const formData = new FormData();
   formData.append('libelle', libelle);
 
+  console.log(formData);
   const result = await fetch('/groupes/add', {
     method: 'POST',
     body: formData

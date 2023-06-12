@@ -30,7 +30,8 @@ $router->get('/niveau/classe/ajouter', 'App\Controllers\ClasseController@ajouter
 $router->post('/niveau/classe/ajouter', 'App\Controllers\ClasseController@ajouterClasse');
 $router->get('/classes/:id', 'App\Controllers\ClasseController@getClasses');
 $router->get('/classes/:id/disciplines', 'App\Controllers\ClasseController@getDisciplines');
-$router->get('/classe/coef', 'App\Controllers\ClasseController@showAddGestionDiscipline');
+$router->get('/classe/coef/:id', 'App\Controllers\ClasseController@getponderation');
+$router->post('/classe/update', 'App\Controllers\ClasseController@updateDisciplines');
 
 
 $router->get('/classe/liste/:id', 'App\Controllers\EleveController@allEleve');

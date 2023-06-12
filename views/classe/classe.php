@@ -55,6 +55,7 @@
                     ?>
                 </span></h3>
             <!-- <?php echo password_hash('motdepasse', PASSWORD_DEFAULT); ?> -->
+            ?>
             <table>
                 <thead>
                     <tr>
@@ -74,7 +75,7 @@
                             </td>
                             <td>
                                 <a href="/classe/liste/<?= $niveau->id ?>" class="btn btn-primary ">Voir</a>
-                                <a href="#" class="btn btn-info ">Discipline</a>
+                                <a href="/classe/coef/<?= $niveau->id ?>" class="btn btn-info ">Discipline</a>
                                 <a href="/niveau/classe/delete/<?= $niveau->id_cycle ?>"
                                     class="btn btn-danger disabled ">Supprimer</a>
                             </td>

@@ -70,7 +70,7 @@ class ClasseModel extends Model
     }
     public function getNameById($id)
     {
-        $sql = "SELECT libelle FROM classe WHERE id = :id limit 1";
+        $sql = "SELECT * FROM classe WHERE id = :id limit 1";
         $statement = $this->db->getPDO()->prepare($sql);
         $statement->execute(['id' => $id]);
         return $statement->fetch();
@@ -78,7 +78,7 @@ class ClasseModel extends Model
     public function getDisciplinesByClasse($classeId)
     {
         $pdo = $this->db->getPDO();
-        $query = "SELECT DISTINCT d.id, d.code_discipline, d.libelle, cd.id_classe
+        $query = "SELECT DISTINCT d.id, d.code_discipline, d.libelle,d.ressource, d.examen, cd.id_classe
               FROM Discipline AS d
               INNER JOIN ClasseDiscipline AS cd ON d.id = cd.id_discipline
               WHERE cd.id_classe = :classeId";
@@ -87,4 +87,20 @@ class ClasseModel extends Model
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function updateDiscipline($libelle, $ressource, $examen)
+    {
+        // echo trim($libelle) . " - $ressource - $examen";
+        $pdo = $this->db->getPDO();
+        $query = "UPDATE Discipline SET ressource = :ressource, examen = :examen WHERE libelle = :libelle";
+        $statement = $pdo->prepare($query);
+        $statement->bindParam(':ressource', $ressource);
+        $statement->bindParam(':examen', $examen);
+        $statement->bindParam(':libelle', $libelle);
+        $result = $statement->execute();
+        // var_dump($result);
+        return $result;
+
+    }
+
 }

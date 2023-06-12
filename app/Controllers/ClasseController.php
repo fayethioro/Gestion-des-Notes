@@ -11,13 +11,11 @@ class ClasseController extends Controller
     {
         $classe = (new NiveauModel($this->getDB()))->allClasse($id);
         $name = (new NiveauModel($this->getDB()))->getNameById($id);
-
         return $this->view('classe.classe', compact('classe', 'id', 'name'));
     }
     public function destroyClasse(int $id)
     {
         $classe = (new NiveauModel($this->getDB()))->destroy($id);
-
         return $this->view('classe.classe', compact('classe', ));
 
     }
@@ -61,21 +59,58 @@ class ClasseController extends Controller
         echo json_encode($disciplines);
     }
 
-    // public function getponderation()
-    // {
-    //     $disciplines = (new ClasseModel($this->getDB()))->getDisciplinesByClasse($classeId);
-    //     // Retourner les disciplines au format JSON
-    //     echo json_encode($disciplines);
-    // }
-
-    public function showAddGestionDiscipline()
+    public function getponderation($classeId)
     {
-        // Charger le contenu HTML du formulaire
-        $content = file_get_contents('../views/classe/ponderation.php');
+        $disciplines = (new ClasseModel($this->getDB()))->getDisciplinesByClasse($classeId);
+        $name = (new ClasseModel($this->getDB()))->getNameById($classeId);
+        // Retourner les disciplines au format JSON
+        // echo json_encode($disciplines);
 
-        // Afficher le contenu HTML
-        echo $content;
+        return $this->view('classe.ponderation', compact('disciplines', 'name'));
+
     }
+
+    public function updateDisciplines()
+    {
+        // Récupérer les données envoyées dans la requête
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        // foreach ($datas as $data) {
+        //     (new ClasseModel($this->getDB()))->updateDiscipline($data['libelle'], $data['ressource'], $data['examen']);
+
+        // }
+        print_r($data);
+        $size = count($data);
+        // Vérifier si les données sont valides
+        if (!$data || !is_array($data)) {
+            echo json_encode(['success' => false, 'error' => 'données invalides']);
+            return;
+        }
+        // Parcourir les mises à jour des disciplines
+        else {
+
+            $bool = 0;
+            foreach ($data as $update) {
+                $libelle = trim($update['libelle']);
+                $ressource = trim(intval($update['ressource']));
+                $examen = trim(intval($update['examen']));
+                // Mettre à jour la discipline dans la table 'Discipline'
+                $result = (new ClasseModel($this->getDB()))->updateDiscipline
+                ($libelle, $ressource, $examen);
+                $bool += ($result === true) ? 1 : 0;
+            }
+            if ($size == $bool) {
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'erreur' => 'erreur de chargement']);
+
+            }
+
+
+        }
+
+    }
+
 
 
 }
