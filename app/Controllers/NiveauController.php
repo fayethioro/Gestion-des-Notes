@@ -36,6 +36,7 @@ class NiveauController extends Controller
         header('Location: /niveau');
     }
 
+
     public function getCycles()
     {
         $cycles = (new NiveauModel($this->getDB()))->AllCycle();

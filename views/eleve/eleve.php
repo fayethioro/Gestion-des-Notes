@@ -42,8 +42,6 @@
                                                 </div>
                                             </div>
 
-
-
                                             <div class="dflex jcc">
                                                 <div><label for="date_naissance">Date de naissance :</label>
                                                     <input type="text" name="date_naissance" id="date_naissance">
@@ -79,6 +77,7 @@
                                                         echo $params['name']->libelle;
                                                         ?>" required>
                                                     <br>
+
                                                 </div>
                                                 <div class="niveaueleve">
                                                     <?php
@@ -103,12 +102,64 @@
         </section>
 
         <section class="field">
-            <h3>Annee Scolaire <span>
-                    <?php
-                    echo $_SESSION['statut'];
-                    ?>
-                </span></h3>
+            <div class="dflex jcc">
+                <h5>
+                    <a href="/niveau/classe/<?= $params['niveau']->id_cycle ?>">
+                        <?php echo $params['name']->libelle; ?>
+                    </a> <span>
+                        <?php
+                        echo $_SESSION['statut'];
+                        echo "<br/>";
+                        ?>
+                    </span>
+                    <span>Effectif :
+                        <?php echo $params['effectif']; ?>
+                    </span>
+                    <br>
+                    <span>Moyenne : 13</span>
+                </h5>
+            </div>
+            <div class="selection dflex jca">
+                <div>
+                    <div class="btn btn-primary">
+                        <a href="/niveau/classe/<?= $params['niveau']->id_cycle ?>"> Retour</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn btn-info">
+                        <a href="/classe/coef/<?= $params['id'] ?>"> Coef</a>
 
+                    </div>
+                </div>
+                <div>
+                    <label for="groupe">Disciplines:</label><br>
+                    <select id="groupe" name="groupe">
+                        <option value="">Choisir</option>
+                        <?php foreach ($params['disciplines'] as $discipline): ?>
+
+                            <option value="<?= $discipline['id'] ?>">
+                                <?php echo $discipline['libelle'] ?>
+                            </option>
+                        <?php endforeach; ?>
+
+                    </select>
+                </div>
+                <div>
+                    <label for="groupe">Semestre:</label><br>
+                    <div style="border : solid 0.5px black; padding: 2px;">
+                        <input type="hidden" name="semestre" value="<?php echo $params['semestre'][0]->id ?>">
+                        <?php echo $params['semestre'][0]->libelle ?>
+                    </div>
+                </div>
+                <div>
+                    <label for="groupe">Notes:</label><br>
+                    <select id="groupe" name="groupe">
+                        <option value="">Choisir</option>
+                        <option value="1">Ressources</option>
+                        <option value="2">Examen</option>
+                    </select>
+                </div>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -119,7 +170,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($params['eleve'] as $niveau): ?>
+                    <!-- <?php foreach ($params['eleve'] as $niveau): ?>
                         <tr>
                             <td>
                                 <?= $niveau->prenom_eleve ?>
@@ -135,7 +186,7 @@
                                 <a href="#" class="btn btn-danger disabled ">Supprimer</a>
                             </td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endforeach; ?> -->
                 </tbody>
             </table>
         </section>

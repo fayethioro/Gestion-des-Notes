@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ClasseModel;
 use App\Models\EleveModel;
+use App\Models\SemestreModel;
 
 class EleveController extends Controller
 {
@@ -12,7 +13,13 @@ class EleveController extends Controller
         $eleve = (new ClasseModel($this->getDB()))->allEleve($id);
         $niveau = (new ClasseModel($this->getDB()))->getIdCycleById($id);
         $name = (new ClasseModel($this->getDB()))->getNameById($id);
-        return $this->view('eleve.eleve', compact('eleve', 'id', 'niveau', 'name'));
+        $effectif = (new EleveModel($this->getDB()))->countEleve($id);
+        $disciplines = (new ClasseModel($this->getDB()))->getDisciplinesByClasse($id);
+        $semestre = (new SemestreModel($this->getDB()))->AllSemestre();
+        return $this->view(
+            'eleve.eleve',
+            compact('eleve', 'id', 'niveau', 'name', 'effectif', 'disciplines', 'semestre')
+        );
     }
 
     public function AjouterEleve()
@@ -38,7 +45,6 @@ class EleveController extends Controller
         }
 
     }
-
 
 
 }

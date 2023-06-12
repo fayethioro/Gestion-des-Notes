@@ -146,9 +146,28 @@ text-align: center;}
     -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
     padding: 20px;
     display: none;
+    
 }
 
 input[type="checkbox"]
 {
     background: red;
+}
+.selection{
+    box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    margin-top: 5px;
+    padding: 10px; 
+    margin-bottom: 10px;
+}
+
+.card-body-semestre{
+    background: #00080d7b;
+    height: 100px;
+    width: 150px;
+}
+.semeste{
+    padding: 10px;
+background: rgba(29, 3, 69, 0.137);
 }

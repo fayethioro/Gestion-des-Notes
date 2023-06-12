@@ -34,15 +34,17 @@ $router->get('/classe/coef/:id', 'App\Controllers\ClasseController@getponderatio
 $router->post('/classe/update', 'App\Controllers\ClasseController@updateDisciplines');
 $router->post('/disciplines/delete', 'App\Controllers\ClasseController@deleteDiscipline');
 
-
-
 $router->get('/classe/liste/:id', 'App\Controllers\EleveController@allEleve');
 $router->get('/classe/liste/ajouter', 'App\Controllers\EleveController@ajouterEleve');
 $router->post('/classe/liste/ajouter', 'App\Controllers\EleveController@ajouterEleve');
+$router->get('/semestre', 'App\Controllers\EleveController@AllSemestre');
+
+$router->get('/annee/modifie/:id', 'App\Controllers\SemestreController@modifierEtat');
+
+
 
 
 $router->get('/discipline/gestion', 'App\Controllers\DisciplineController@showAddGestionDisciplineForm');
-
 $router->post('/disciplines/add', 'App\Controllers\DisciplineController@addDiscipline');
 $router->get('/disciplines', 'App\Controllers\DisciplineController@getAllDisciplines');
 

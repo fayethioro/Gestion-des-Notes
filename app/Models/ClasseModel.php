@@ -41,14 +41,7 @@ class ClasseModel extends Model
         $statement->execute(['id' => $id]);
         return $statement->fetchAll();
     }
-    public function countEleve($id)
-    {
-        $statement = $this->db->getPDO()->prepare('SELECT COUNT(*) as total_eleve
-        FROM Eleve
-        WHERE id_classe = :id');
-        $statement->execute(['id' => $id]);
-        return $statement->fetchColumn();
-    }
+
     public function getActiveAnneeId()
     {
         $sql = "SELECT id FROM AnneeScolaire WHERE statut = 1";
@@ -99,4 +92,5 @@ class ClasseModel extends Model
         return $statement->execute();
 
     }
+
 }

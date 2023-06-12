@@ -42,9 +42,6 @@
                                 </a>
                             </td>
                         </tr>
-                        <!-- <input type="text" name="" id="classe" value="<?= $niveau['id_classe'] ?>">
-                        <input type="text" name="" id="discipline" value="<?= $niveau['id'] ?>"> -->
-
                     <?php endforeach; ?>
                 </tbody>
                 <!-- Tableau des disciplines -->

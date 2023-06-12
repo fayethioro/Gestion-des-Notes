@@ -2,8 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Models\NiveauModel;
 use App\Models\ClasseModel;
+use App\Models\NiveauModel;
+use App\Models\SemestreModel;
 use App\Models\DisciplineModel;
 
 class ClasseController extends Controller
@@ -12,7 +13,8 @@ class ClasseController extends Controller
     {
         $classe = (new NiveauModel($this->getDB()))->allClasse($id);
         $name = (new NiveauModel($this->getDB()))->getNameById($id);
-        return $this->view('classe.classe', compact('classe', 'id', 'name'));
+        $semestre = (new SemestreModel($this->getDB()))->AllSemestreByCycle($id);
+        return $this->view('classe.classe', compact('classe', 'id', 'name', 'semestre'));
     }
     public function destroyClasse(int $id)
     {
@@ -47,6 +49,9 @@ class ClasseController extends Controller
             exit();
         }
     }
+
+
+
 
     public function getClasses($id)
     {

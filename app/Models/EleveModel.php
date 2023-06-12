@@ -38,4 +38,13 @@ class EleveModel extends Model
         }
     }
 
+    public function countEleve($id)
+    {
+        $statement = $this->db->getPDO()->prepare('SELECT COUNT(*) as total_eleve
+        FROM Eleve
+        WHERE id_classe = :id');
+        $statement->execute(['id' => $id]);
+        return $statement->fetchColumn();
+    }
+
 }
