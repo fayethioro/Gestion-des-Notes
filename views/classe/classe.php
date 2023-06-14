@@ -9,7 +9,7 @@
                 <p>
                     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
                         aria-expanded="false" aria-controls="collapseExample">
-                        semestre en cours
+                        <?php echo $params['semestre'][0]->libelle ?>
                     </a>
                 </p>
                 <div class="collapse" id="collapseExample">

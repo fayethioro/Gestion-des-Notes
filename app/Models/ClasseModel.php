@@ -33,7 +33,8 @@ class ClasseModel extends Model
 
     public function allEleve($id)
     {
-        $statement = $this->db->getPDO()->prepare('SELECT e.id, e.prenom_eleve, e.nom_eleve,e.date_de_naissance
+        $statement = $this->db->getPDO()->prepare
+        ('SELECT e.id, e.prenom_eleve, e.nom_eleve,e.date_de_naissance, e.id_classe
         FROM Eleve e
         JOIN Classe c ON e.id_classe = c.id
         JOIN AnneeScolaire a ON c.id_annee = a.id
@@ -80,22 +81,10 @@ class ClasseModel extends Model
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    // public function updateDiscipline($id, $ressource, $examen)
-    // {
-    //     $pdo = $this->db->getPDO();
-    //     $query = "UPDATE Discipline SET ressource = :ressource, examen = :examen WHERE id = :id";
-    //     $statement = $pdo->prepare($query);
-    //     $statement->bindParam(':ressource', $ressource);
-    //     $statement->bindParam(':examen', $examen);
-    //     $statement->bindParam(':id', $id);
-    //     return $statement->execute();
-
-    // }
     public function updateDisciplineres($id, $ressource)
     {
         $pdo = $this->db->getPDO();
-        $query = "UPDATE Discipline SET ressource = :ressource WHERE id = :id";
+        $query = "UPDATE ClasseDiscipline SET ressource = :ressource WHERE id_discipline = :id";
         $statement = $pdo->prepare($query);
         $statement->bindParam(':ressource', $ressource);
         $statement->bindParam(':id', $id);
@@ -104,7 +93,7 @@ class ClasseModel extends Model
     public function updateDisciplineexam($id, $examen)
     {
         $pdo = $this->db->getPDO();
-        $query = "UPDATE Discipline SET examen = :examen WHERE id = :id";
+        $query = "UPDATE ClasseDiscipline SET examen = :examen WHERE id_discipline = :id";
         $statement = $pdo->prepare($query);
         $statement->bindParam(':examen', $examen);
         $statement->bindParam(':id', $id);

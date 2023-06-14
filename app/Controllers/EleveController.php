@@ -23,8 +23,8 @@ class EleveController extends Controller
         );
     }
 
-    public function AjouterEleve()
-    {
+    public function AjouterEleve(
+    ) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Récupérer les données du formulaire
             $prenom = $_POST['prenom'];

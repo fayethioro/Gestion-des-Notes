@@ -47,7 +47,3 @@ envoi.addEventListener("click", validateForm)
 
 ajout.addEventListener("click", validateForm)   
 const modal = document.querySelector('.modal-content');
-
-// setTimeout(function () {
-//     modal.style.display = 'none';
-//     }, 2500);

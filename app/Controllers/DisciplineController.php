@@ -49,7 +49,12 @@ class DisciplineController extends Controller
         }
     }
 
-
+    public function getNote($id)
+    {
+        $disciplines = (new ClasseModel($this->getDB()))->getDisciplinesByClasse($id);
+        // var_dump($disciplines);
+        echo json_encode($disciplines);
+    }
 
     private function generateDisciplineCode($discipline)
     {

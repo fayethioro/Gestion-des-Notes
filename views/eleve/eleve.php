@@ -126,15 +126,16 @@
                     </div>
                 </div>
                 <div>
-                    <div class="btn btn-info">
+                    <div class="btn btn-info" style="margin-top: 6px;">
                         <a href="/classe/coef/<?= $params['id'] ?>"> Coef</a>
 
                     </div>
                 </div>
                 <div>
                     <label for="groupe">Disciplines:</label><br>
-                    <select id="groupe" name="groupe">
-                        <option value="">Choisir</option>
+                    <select id="groupe" name="groupe" class="discipline"
+                        style="border : solid 0.5px black; padding: 2px;">
+                        <option value="0">Choisir</option>
                         <?php foreach ($params['disciplines'] as $discipline): ?>
 
                             <option value="<?= $discipline['id'] ?>">
@@ -153,10 +154,10 @@
                 </div>
                 <div>
                     <label for="groupe">Notes:</label><br>
-                    <select id="groupe" name="groupe">
-                        <option value="">Choisir</option>
+                    <select id="groupe" name="groupe" class="note" style="border : solid 0.5px black; padding: 2px;">
+                        <option value="0">Choisir</option>
                         <?php foreach ($params['notes'] as $note): ?>
-                            <option value="<?= $note->id ?>">
+                            <option value=" <?= $note->id ?>">
                                 <?php echo $note->libelle ?>
                             </option>
 
@@ -165,13 +166,16 @@
                     </select>
                 </div>
             </div>
-            <!-- <?php print_r($params['eleve']); ?> -->
+            <!-- <?php
+            echo '<pre>';
+            print_r($params['eleves']);
+            echo '<pre>'; ?> -->
             <table>
                 <thead>
                     <tr>
                         <th>Photo</th>
                         <th>Prenoms & Nom</th>
-                        <th>Note</th>
+                        <th class="ponderation">Note</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -183,16 +187,31 @@
                             <td>
                                 <?php echo $eleve->prenom_eleve ?>
                                 <?php echo $eleve->nom_eleve ?>
+                                <input type="hidden" name="id_classe" value="<?= $eleve->id_classe ?>" class="classeId">
                             </td>
 
-                            <td> <input type="number" name="note" id="note" value="10"
-                                    style="height: 30px;width: 40px;"><span>/30</span></td>
+                            <td class="ponderation">
+                                <input type=" number" name="notes" id="notes" value="">
+                                <input type="hidden" name="" classe="eleveId" value="<?= $eleve->id ?>">
+                                <span>/</span>
+                                <span class=" max-note">30</span>
+                            </td>
 
                             <td> <button class="btn-primary">Voir</button> </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <div class="dflex jca ">
+                <div class="dflex jcc ">
+                    <input type="submit" class="btn btn-primary " value="Enregistrer">
+                </div>
+                <!-- <div class="btn btn-primary">
+                    <div class="spinner-border text-light" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div> -->
+            </div>
         </section>
     </main>
 </div>

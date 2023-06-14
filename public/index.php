@@ -47,7 +47,7 @@ $router->get('/annee/modifie/:id', 'App\Controllers\SemestreController@modifierE
 $router->get('/discipline/gestion', 'App\Controllers\DisciplineController@showAddGestionDisciplineForm');
 $router->post('/disciplines/add', 'App\Controllers\DisciplineController@addDiscipline');
 $router->get('/disciplines', 'App\Controllers\DisciplineController@getAllDisciplines');
-// $router->get('/disciplines/id', 'App\Controllers\DisciplineController@AllDisciplines');
+$router->get('/note/:id', 'App\Controllers\DisciplineController@getNote');
 
 
 $router->post('/disciplines/supprimer', 'App\Controllers\DisciplineController@deleteDisciplines');
