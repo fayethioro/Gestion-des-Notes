@@ -49,10 +49,6 @@ class ClasseController extends Controller
             exit();
         }
     }
-
-
-
-
     public function getClasses($id)
     {
         $classes = (new NiveauModel($this->getDB()))->allClasse($id);
@@ -75,40 +71,22 @@ class ClasseController extends Controller
         return $this->view('classe.ponderation', compact('disciplines', 'name'));
 
     }
-
     public function updateDisciplines()
     {
         // Récupérer les données envoyées dans la requête
         $data = json_decode(file_get_contents('php://input'), true);
 
-        $size = count($data);
-        // Vérifier si les données sont valides
-        if (!$data || !is_array($data)) {
-            echo json_encode(['success' => false, 'error' => 'données invalides']);
-            return false;
-        }
-        // Parcourir les mises à jour des disciplines
-        else {
-
-            $bool = 0;
-            foreach ($data as $update) {
-                $libelle = trim($update['libelle']);
-                $ressource = trim(intval($update['ressource']));
-                $examen = trim(intval($update['examen']));
-                // Mettre à jour la discipline dans la table 'Discipline'
-                $result = (new ClasseModel($this->getDB()))->updateDiscipline
-                ($libelle, $ressource, $examen);
-                $bool += ($result === true) ? 1 : 0;
-            }
-            if ($size == $bool) {
-                echo json_encode(['success' => true]);
+        $classemodel = new ClasseModel($this->getDB());
+        foreach ($data as $value) {
+            if ($value['libelle'] === 'ressource') {
+                $classemodel->updateDisciplineres($value['id'], $value['note']);
             } else {
-                echo json_encode(['success' => false, 'erreur' => 'erreur de chargement']);
-
+                $classemodel->updateDisciplineexam($value['id'], $value['note']);
             }
-
         }
     }
+
+
     public function deleteDiscipline()
     {
 

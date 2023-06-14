@@ -48,4 +48,11 @@ class SemestreModel extends Model
 
         return $result ? $result['id_cycle'] : false;
     }
+
+    public function typeNote()
+    {
+        $stmt = $this->db->getPDO()->query('SELECT * FROM typenote
+       ');
+        return $stmt->fetchAll();
+    }
 }

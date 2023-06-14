@@ -71,7 +71,7 @@ class ClasseModel extends Model
     public function getDisciplinesByClasse($classeId)
     {
         $pdo = $this->db->getPDO();
-        $query = "SELECT DISTINCT d.id, d.code_discipline, d.libelle,d.ressource, d.examen, cd.id_classe
+        $query = "SELECT DISTINCT d.id, d.code_discipline, d.libelle,cd.ressource, cd.examen, cd.id_classe
               FROM Discipline AS d
               INNER JOIN ClasseDiscipline AS cd ON d.id = cd.id_discipline
               WHERE cd.id_classe = :classeId";
@@ -81,16 +81,35 @@ class ClasseModel extends Model
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function updateDiscipline($libelle, $ressource, $examen)
+    // public function updateDiscipline($id, $ressource, $examen)
+    // {
+    //     $pdo = $this->db->getPDO();
+    //     $query = "UPDATE Discipline SET ressource = :ressource, examen = :examen WHERE id = :id";
+    //     $statement = $pdo->prepare($query);
+    //     $statement->bindParam(':ressource', $ressource);
+    //     $statement->bindParam(':examen', $examen);
+    //     $statement->bindParam(':id', $id);
+    //     return $statement->execute();
+
+    // }
+    public function updateDisciplineres($id, $ressource)
     {
         $pdo = $this->db->getPDO();
-        $query = "UPDATE Discipline SET ressource = :ressource, examen = :examen WHERE libelle = :libelle";
+        $query = "UPDATE Discipline SET ressource = :ressource WHERE id = :id";
         $statement = $pdo->prepare($query);
         $statement->bindParam(':ressource', $ressource);
-        $statement->bindParam(':examen', $examen);
-        $statement->bindParam(':libelle', $libelle);
+        $statement->bindParam(':id', $id);
         return $statement->execute();
-
     }
+    public function updateDisciplineexam($id, $examen)
+    {
+        $pdo = $this->db->getPDO();
+        $query = "UPDATE Discipline SET examen = :examen WHERE id = :id";
+        $statement = $pdo->prepare($query);
+        $statement->bindParam(':examen', $examen);
+        $statement->bindParam(':id', $id);
+        return $statement->execute();
+    }
+
 
 }

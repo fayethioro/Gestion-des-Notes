@@ -89,7 +89,6 @@
                     echo $_SESSION['statut'];
                     ?>
                 </span></h3>
-            <?php echo $params['semestre'][0]->libelle ?>
             <table>
                 <thead>
                     <tr>

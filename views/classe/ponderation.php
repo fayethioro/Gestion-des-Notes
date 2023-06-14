@@ -25,17 +25,20 @@
                 <tbody>
                     <?php foreach ($params['disciplines'] as $niveau): ?>
                         <tr>
-                            <td>
+                            <td class="thioro">
+                                <input type="hidden" name="" value="<?= $niveau['id'] ?>" class="lib">
                                 <?= $niveau['libelle'] ?>
                             </td>
-                            <td>
-                                <input type="number" name="ressource" id="" value="<?= $niveau['ressource'] ?>">
+                            <td class="thioro">
+                                <input type="number" name="ressource" id="ressource_<?= $niveau['id'] ?>"
+                                    value="<?= $niveau['ressource'] ?>" class="ressource">
+                            </td>
+                            <td class="thioro">
+                                <input type="number" name="examen" id="examen_<?= $niveau['id'] ?>"
+                                    value="<?= $niveau['examen'] ?>" class="examen">
                             </td>
                             <td>
-                                <input type="number" name="examen" id="" value="<?= $niveau['examen'] ?>">
-                            </td>
-                            <td>
-                                <a href="/classe/coef/<?= $niveau['id_classe'] ?>"
+                                <a href=" /classe/coef/<?= $niveau['id_classe'] ?>"
                                     class="btn btn-danger supprimer disabled"><i class="fa-regular fa-trash-can   "
                                         style="color: white;"></i>
 

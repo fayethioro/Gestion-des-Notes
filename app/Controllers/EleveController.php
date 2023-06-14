@@ -10,15 +10,16 @@ class EleveController extends Controller
 {
     public function allEleve($id)
     {
-        $eleve = (new ClasseModel($this->getDB()))->allEleve($id);
+        $eleves = (new ClasseModel($this->getDB()))->allEleve($id);
         $niveau = (new ClasseModel($this->getDB()))->getIdCycleById($id);
         $name = (new ClasseModel($this->getDB()))->getNameById($id);
         $effectif = (new EleveModel($this->getDB()))->countEleve($id);
         $disciplines = (new ClasseModel($this->getDB()))->getDisciplinesByClasse($id);
         $semestre = (new SemestreModel($this->getDB()))->AllSemestre();
+        $notes = (new SemestreModel($this->getDB()))->typeNote();
         return $this->view(
             'eleve.eleve',
-            compact('eleve', 'id', 'niveau', 'name', 'effectif', 'disciplines', 'semestre')
+            compact('eleves', 'id', 'niveau', 'name', 'effectif', 'disciplines', 'semestre', 'notes')
         );
     }
 

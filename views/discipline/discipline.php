@@ -81,10 +81,11 @@
                     <input type="button" id="add-button" class="btn btn-primary" value="Ajouter">
                 </div>
             </form>
+            <?php var_dump($params['disciplines']); ?>
+            <h2>Les discipline de la classe <a href="#"> <span class="classeDiscipline">
 
-            <h2>Les discipline de la classe <span class="classeDiscipline">
+                    </span></a></h2>
 
-                </span></h2>
             <table id="discipline-table">
                 <thead>
                     <tr>

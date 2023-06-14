@@ -113,6 +113,4 @@ class DisciplineController extends Controller
         // Afficher le contenu HTML
         echo $content;
     }
-
-
 }

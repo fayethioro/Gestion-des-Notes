@@ -155,41 +155,45 @@
                     <label for="groupe">Notes:</label><br>
                     <select id="groupe" name="groupe">
                         <option value="">Choisir</option>
-                        <option value="1">Ressources</option>
-                        <option value="2">Examen</option>
+                        <?php foreach ($params['notes'] as $note): ?>
+                            <option value="<?= $note->id ?>">
+                                <?php echo $note->libelle ?>
+                            </option>
+
+                        <?php endforeach; ?>
+
                     </select>
                 </div>
             </div>
+            <!-- <?php print_r($params['eleve']); ?> -->
             <table>
                 <thead>
                     <tr>
-                        <th>Prénom</th>
-                        <th>Nom</th>
-                        <th>Date de naissance</th>
+                        <th>Photo</th>
+                        <th>Prenoms & Nom</th>
+                        <th>Note</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <?php foreach ($params['eleve'] as $niveau): ?>
+                    <?php foreach ($params['eleves'] as $eleve): ?>
                         <tr>
+                            <td> <img src="/../../images/logo.png" alt="" style="height: 50px;width: 50px;"></td>
+
                             <td>
-                                <?= $niveau->prenom_eleve ?>
+                                <?php echo $eleve->prenom_eleve ?>
+                                <?php echo $eleve->nom_eleve ?>
                             </td>
-                            <td>
-                                <?= $niveau->nom_eleve ?>
-                            </td>
-                            <td>
-                                <?= $niveau->date_de_naissance ?>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-primary ">Voir</a>
-                                <a href="#" class="btn btn-danger disabled ">Supprimer</a>
-                            </td>
+
+                            <td> <input type="number" name="note" id="note" value="10"
+                                    style="height: 30px;width: 40px;"><span>/30</span></td>
+
+                            <td> <button class="btn-primary">Voir</button> </td>
                         </tr>
-                    <?php endforeach; ?> -->
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </section>
     </main>
 </div>
-<script src="/../../js/annee.js"></script>
+<script src="/../../js/eleve.js"></script>
