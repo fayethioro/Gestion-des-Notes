@@ -67,65 +67,7 @@ form.addEventListener('submit', async (e) => {
   await updateDisciplines(); 
  
 });
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   var updateForm = document.getElementById('update-form');
-
-//   updateForm.addEventListener('submit', function(e) {
-//     e.preventDefault(); // Empêche le formulaire de se soumettre normalement
-
-//     var updatedData = [];
-
-//     // Parcours des lignes du tableau des disciplines
-//     var rows = updateForm.querySelectorAll('#discipline-table tbody tr');
-//     rows.forEach(function(row) {
-//       var idInput = row.querySelector('.lib');
-//       var ressourceInput = row.querySelector('.ressource');
-//       var examenInput = row.querySelector('.examen');
-
-//       var id = idInput.value;
-//       var ressource = ressourceInput.value;
-//       var examen = examenInput.value;
-
-//       if (ressourceInput.dataset.initialValue !== ressource || examenInput.dataset.initialValue !== examen) {
-//         var updatedItem = {
-//           id: id,
-//           ressource: ressource,
-//           examen: examen
-//         };
-
-//         updatedData.push(updatedItem);
-//       }
-//     });
-
-//     fetch('/classe/update', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(updatedData)
-//     })
-//       .then(function(response) {
-//         return response.json();
-//       })
-//       .then(function(data) {
-//         if (data.success) {
-//           console.log('Mise à jour réussie !');
-//         } else {
-//           console.error('Erreur lors de la mise à jour :', data.error);
-//         }
-//       })
-//       .catch(function(error) {
-//         console.error('Erreur lors de la requête Fetch :', error);
-//       });
-//   });
-// });
-
-
-
 const libell = document.querySelectorAll('.lib');
-// console.log(libell);
 libell.forEach(element => {
   console.log(element.value);
 });

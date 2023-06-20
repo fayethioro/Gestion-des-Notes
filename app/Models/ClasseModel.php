@@ -72,7 +72,8 @@ class ClasseModel extends Model
     public function getDisciplinesByClasse($classeId)
     {
         $pdo = $this->db->getPDO();
-        $query = "SELECT DISTINCT d.id, d.code_discipline, d.libelle,cd.ressource, cd.examen, cd.id_classe
+        $query = "SELECT DISTINCT d.id, d.code_discipline, d.libelle,cd.ressource,
+         cd.examen, cd.id_classe, cd.id as id_classeDiscipline
               FROM Discipline AS d
               INNER JOIN ClasseDiscipline AS cd ON d.id = cd.id_discipline
               WHERE cd.id_classe = :classeId";

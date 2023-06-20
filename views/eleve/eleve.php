@@ -44,7 +44,7 @@
 
                                             <div class="dflex jcc">
                                                 <div><label for="date_naissance">Date de naissance :</label>
-                                                    <input type="text" name="date_naissance" id="date_naissance">
+                                                    <input type="date" name="date_naissance" id="date_naissance">
                                                     <br>
                                                 </div>
 
@@ -137,18 +137,17 @@
                         style="border : solid 0.5px black; padding: 2px;">
                         <option value="0">Choisir</option>
                         <?php foreach ($params['disciplines'] as $discipline): ?>
-
-                            <option value="<?= $discipline['id'] ?>">
+                            <option value="<?= $discipline['id'] ?>" id="<?= $discipline['id_classeDiscipline'] ?>">
                                 <?php echo $discipline['libelle'] ?>
                             </option>
                         <?php endforeach; ?>
-
                     </select>
                 </div>
                 <div>
                     <label for="groupe">Semestre:</label><br>
                     <div style="border : solid 0.5px black; padding: 2px;">
-                        <input type="hidden" name="semestre" value="<?php echo $params['semestre'][0]->id ?>">
+                        <input type="hidden" name="semestre" value="<?php echo $params['semestre'][0]->id ?>"
+                            id="semestreId">
                         <?php echo $params['semestre'][0]->libelle ?>
                     </div>
                 </div>
@@ -170,6 +169,7 @@
             echo '<pre>';
             print_r($params['eleves']);
             echo '<pre>'; ?> -->
+            <!-- <?php var_dump($params['libelle']); ?> -->
             <table>
                 <thead>
                     <tr>
@@ -190,9 +190,9 @@
                                 <input type="hidden" name="id_classe" value="<?= $eleve->id_classe ?>" class="classeId">
                             </td>
 
-                            <td class="ponderation">
-                                <input type=" number" name="notes" id="notes" value="">
-                                <input type="hidden" name="" classe="eleveId" value="<?= $eleve->id ?>">
+                            <td class="ponderation nombre ">
+                                <input type=" number" name="notes" class="noteEleve" value="">
+                                <input type="hidden" name="" class="eleveId" value="<?= $eleve->id ?>">
                                 <span>/</span>
                                 <span class=" max-note">30</span>
                             </td>
@@ -204,7 +204,7 @@
             </table>
             <div class="dflex jca ">
                 <div class="dflex jcc ">
-                    <input type="submit" class="btn btn-primary " value="Enregistrer">
+                    <input type="submit" class="btn btn-primary " value="Enregistrer" id="enregistrer">
                 </div>
                 <!-- <div class="btn btn-primary">
                     <div class="spinner-border text-light" role="status">

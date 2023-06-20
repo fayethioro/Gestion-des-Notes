@@ -55,4 +55,5 @@ class SemestreModel extends Model
        ');
         return $stmt->fetchAll();
     }
+
 }

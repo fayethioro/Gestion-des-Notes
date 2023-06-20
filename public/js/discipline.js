@@ -119,7 +119,6 @@ function loadDisciplines() {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.value = discipline.id;
-        // checkbox.checked = true;
         checkboxCell.appendChild(checkbox);
         row.appendChild(checkboxCell);
 
@@ -171,7 +170,6 @@ async function addDiscipline() {
   console.log(r);
   if (result.ok) {
     loadDisciplines();
-    // console.log('bien');
           } else {
             alert.error('Une erreur s\'est produite lors de l\'ajout la discipline');
           }
@@ -237,7 +235,6 @@ async function addGroupeDiscipline() {
     alert('Discipline ajoutée au groupe avec succès');
     const selectGroup = document.getElementById('groupe');
     selectGroup.value = response.groupId;
-    // console.log(selectGroup);
     selectGroup.innerHTML = '';
     console.log(selectGroup);
     loadGroupes();
@@ -246,9 +243,8 @@ async function addGroupeDiscipline() {
     console.error('Une erreur s\'est produite lors de l\'ajout de la discipline au groupe');
   }
 }
-// console.log(addGroupeDiscipline());
 
-addButtonmodal = document.getElementById('add-buttonmodal');
+const addButtonmodal = document.getElementById('add-buttonmodal');
 
 
 // Fonction d'initialisation
@@ -270,7 +266,6 @@ function init() {
    
     addGroupeDiscipline();
     modalformulaire.style.display = 'none';
-    // loadGroupes();
   });
 
   const deleteButton = document.getElementById('delete-button');

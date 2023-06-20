@@ -41,22 +41,17 @@ $router->get('/semestre', 'App\Controllers\EleveController@AllSemestre');
 
 $router->get('/annee/modifie/:id', 'App\Controllers\SemestreController@modifierEtat');
 
-
-
-
 $router->get('/discipline/gestion', 'App\Controllers\DisciplineController@showAddGestionDisciplineForm');
 $router->post('/disciplines/add', 'App\Controllers\DisciplineController@addDiscipline');
 $router->get('/disciplines', 'App\Controllers\DisciplineController@getAllDisciplines');
 $router->get('/note/:id', 'App\Controllers\DisciplineController@getNote');
-
-
 $router->post('/disciplines/supprimer', 'App\Controllers\DisciplineController@deleteDisciplines');
-
-
-
 
 $router->get('/groupes', 'App\Controllers\GroupeDisciplineController@getGroupes');
 $router->post('/groupes/add', 'App\Controllers\GroupeDisciplineController@addDisciplineGroupes');
+
+$router->post('/note', 'App\Controllers\NoteController@enregistrerNote');
+$router->get('/notes', 'App\Controllers\NoteController@getAllNote');
 
 $router->get('/', 'App\Controllers\UserController@login');
 $router->post('/', 'App\Controllers\UserController@loginPost');

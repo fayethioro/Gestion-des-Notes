@@ -23,10 +23,12 @@ class DisciplineController extends Controller
             $discipline = $_POST['discipline'];
 
             // Vérifier si le libellé de discipline existe déjà dans la table Discipline
+
             $disciplineId = (new DisciplineModel($this->getDB()))->getDisciplineIdByLibelle($discipline);
 
             if ($disciplineId !== false) {
                 // Associer la discipline existante à la classe dans la table ClasseDiscipline
+
                 (new DisciplineModel($this->getDB()))->addClasseDiscipline($classeId, $disciplineId);
                 echo json_encode(['success' => true]);
             } else {
@@ -34,10 +36,13 @@ class DisciplineController extends Controller
                 $code = $this->generateDisciplineCode($discipline);
 
                 // Insérer la discipline dans la table Discipline
+
                 $disciplineId = (new DisciplineModel($this->getDB()))->addDiscipline($code, $discipline, $groupeId);
 
                 if ($disciplineId !== false) {
+
                     // Associer la discipline à la classe dans la table ClasseDiscipline
+
                     (new DisciplineModel($this->getDB()))->addClasseDiscipline($classeId, $disciplineId);
                     echo json_encode(['success' => true]);
                 } else {
@@ -52,7 +57,6 @@ class DisciplineController extends Controller
     public function getNote($id)
     {
         $disciplines = (new ClasseModel($this->getDB()))->getDisciplinesByClasse($id);
-        // var_dump($disciplines);
         echo json_encode($disciplines);
     }
 
